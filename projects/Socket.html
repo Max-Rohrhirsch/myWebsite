@@ -20,16 +20,14 @@
             img {
                 height: 50vh;
                 width: 40vw;
-
                 margin-left: 140px;
                 margin-top: 100px;
-
                 border: 1px solid red;
             }
 
             h1 {
                 text-align: center;
-                margin-top: 50px;
+                margin-top: 100px;
                 font-size: 60px;
             }
 
@@ -40,8 +38,6 @@
             .code {
                 border: 1px solid red;
                 position: absolute;
-
-
             }
 
             .used {
@@ -52,7 +48,6 @@
                 max-width: 450px;
                 right: 450px;
                 top: 270px;
-
             }
 
             .usedElement {
@@ -64,24 +59,9 @@
                 margin: 20px;
             }
 
-            .but1, #runaway-btn{
-                background-color: #222;
-                color: #0f0;
-                border: 2px solid #0f0;
-                padding: 15px 25px;
-                cursor: pointer;
-                font-size: 20px;
-                transition: all 500ms;
-                font-family: 'Roboto Mono', monospace;
-                margin-left: 87px;
-                margin-top: 270px;
-                position: absolute;
-            }
-
             .but1:hover {
                 box-shadow: 0 0 15px 0px #4f0;
             }
-
 
             .navR {
                 position: fixed;
@@ -97,18 +77,34 @@
             .navRel {
                 padding: 10px;
             }
+
             .navRel:hover {
                 cursor: pointer;
                 background-color: #111;
             }
+
             #runaway-btn {
                 transition: all 500ms;
                 position: absolute;
                 margin-left: 267px;
                 border-color: #f00;
                 color: #f00;
-
             }
+
+            /* Responsive */
+            @media screen and (max-width: 1200px) {
+                img {
+                    width: 70vw;
+                    margin-left: 15vw;
+                }
+
+                .but1, button {
+                    position: relative;
+                    margin-top: 20px;
+                    margin-left: 15vw;
+                }
+            }
+
         </style>
     </head>
     <body>
@@ -134,16 +130,17 @@
                 <a href="http://max-rohrhirsch.github.io/projects">Projects</a>
             </div>
         </div>
-        <h2> How was it made?</h2>
+        <h2> Wie funktioniert das Programm?</h2>
         <p>
-            Hi, falls ihr mich auf irgendwelchem Weg kontaktieren wollt,
-            könnt ihr das gerne machen. clean design and even including touches
-            of self-selection.
-            On the page, they have two directions for a user to follow:
-            either talking to a member of their sales team or going to the help
-            center for product and account support
+            Das ist eine Art Whatsapp ersatz ohne Verschlüsselung und terminalbased.
+            Es gibt befehle um den Namen zu ändern, eine Gruppe zu erstellen und beizutreten.
+            Es werden aber keine Daten gespeichert. Und es funktioniert nur Text hin und her zu schicken.
         </p>
         <script type="text/javascript">
+            // Sehr gut, du hast dir die Mühe gemacht, denn Code anzuschauen.
+            // Hier ist der Link zu einer "geheimen" Seite:
+            // https://max-rohrhirsch.github.io/Secret_20839403
+
             const button = document.getElementById("runaway-btn");
             const getRandomNumber = (num) => {
                 return Math.floor(Math.random() * (num + 1));

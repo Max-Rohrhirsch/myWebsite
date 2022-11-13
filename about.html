@@ -18,11 +18,11 @@
 
         <style media="screen">
             .level {
-                margin: 5px;
-                margin-left: 40px;
                 width: 300px;
                 height: 5px;
                 border-radius: 2.5px;
+                margin: 5px;
+                margin-left: 40px;
             }
 
             #deutsch  {background: linear-gradient(to right, #0f0 300px, #555 0px)}
@@ -41,7 +41,7 @@
             #rest {
                 margin-left: 100px;
                 margin-top: 200px;
-                margin-bottom: 180px;
+                margin-bottom: 0;
                 display: block;
             }
 
@@ -78,8 +78,44 @@
             }
 
             #welText {
-                margin-left: 200px;
+                margin-left: 15vw;
+                margin-bottom: -100px;
             }
+
+            @media screen and (max-width: 1200px) {
+                #welText {
+                    font-size: 10vw;
+                    max-width: 60vw;
+                    transform: translate(0, -90%);
+                }
+
+                p {
+                    font-size: 3.5vw;
+                    max-width: 50vw;
+                }
+                .right {
+                    margin-left: 11vw;
+                    margin-top: 0;
+                }
+
+                #rest {
+
+                }
+
+                #imgR {
+                    position:relative;
+                    display: block;
+                    margin-left: 20vw;
+                    margin-top: 70px;
+                }
+                #rest h2 {
+                    font-size: 4vw;
+                }
+                #rest h3 {
+                    width: 60vw;
+                }
+            }
+
         </style>
     </head>
     <body>
@@ -96,7 +132,7 @@
         </div>
 
         <h2>About</h2>
-        <p contenteditable="true">
+        <p>
             Ich heiße Max Rohrhirsch bin 18 Jahre alt und wohne im Schwarzwald.
             Wie man unschwer erkennen kann, interesiere ich mich sehr für Informatik und bau im allgemeinen.
             Aktuell bin ich zwar noch Schüler, wurde aber schon auf ein Duales Studium
@@ -141,6 +177,5 @@
 
             <img id="imgR">
         </div>
-        <span style="height: 200px; margin: 100px; display: block;"></span>
     </body>
 </html>
