@@ -71,6 +71,12 @@
                 margin-top: -550px;
                 margin-bottom: 100px;
             }
+            .right h2 {
+                margin-left: 40px;
+            }
+            #rest h2 {
+                margin-left: 40px;
+            }
 
             #skills {
                 display: inline-block;
@@ -82,37 +88,58 @@
                 margin-bottom: -100px;
             }
 
+/* ---------------------------------------------- */
+
             @media screen and (max-width: 1200px) {
                 #welText {
-                    font-size: 10vw;
+                    font-size: 15vw;
                     max-width: 60vw;
-                    transform: translate(0, -90%);
+                    margin-top: 45vh;
+                    margin-bottom: 20vh;
                 }
 
                 p {
-                    font-size: 3.5vw;
-                    max-width: 50vw;
+                    font-size: 5vw;
+                    max-width: 70vw;
                 }
                 .right {
-                    margin-left: 11vw;
-                    margin-top: 0;
+                    margin-left: 15vw;
+                    margin-top: 70px;
                 }
 
-                #rest {
+                .right h2, .right h3 {
+                    margin-left: 0;
+                }
 
+                #imgL {width: 70vw}
+
+                #rest {
+                    margin-left: 15vw;
+                    margin-top: 100px;
                 }
 
                 #imgR {
                     position:relative;
                     display: block;
-                    margin-left: 20vw;
+                    margin-left: 37vw;
+                    width: 70vw;
                     margin-top: 70px;
                 }
+                #imgL {
+                    margin-left: 15vw;
+                }
                 #rest h2 {
-                    font-size: 4vw;
+                    font-size: 25px;
+                    margin-left: 0px;
+                    margin-top: 40px;
                 }
                 #rest h3 {
-                    width: 60vw;
+                    font-size: 20px;
+                    margin-left: 0px;
+                    width: 75vw;
+                }
+                .level {
+                    margin-left: 0;
                 }
             }
 
@@ -141,7 +168,7 @@
         <div id="skills">
             <img id="imgL">
             <div class="right">
-                <h2 style="margin-left: 40px">Sprachen</h2>
+                <h2>Sprachen</h2>
                 <h3>Deutsch</h3>
                 <div id="deutsch" class="level"></div>
                 <h3>Englisch</h3>
@@ -153,13 +180,13 @@
             </div>
         <div>
         <div id="rest">
-            <h2 style="margin-left: 40px"> Betriebssysteme: </h2>
+            <h2> Betriebssysteme: </h2>
             <h3>Windows, Kali Linux, Arch Linux, Linux Mint</h3>
 
-            <h2 style="margin-left: 40px"> Anwendungsprogramme: </h2>
+            <h2> Anwendungsprogramme: </h2>
             <h3>Atom, VS Code, VIM, MS-Office, Github, nmap</h3>
 
-            <h2 style="margin-left: 40px">Programmiersprachen</h2>
+            <h2>Programmiersprachen</h2>
             <h3>Python</h3>
             <div id="python" class="level"></div>
             <h3>HTML</h3>

@@ -4,6 +4,7 @@ body {
     background-color: #000;
     color: white;
     font-family: 'Roboto Mono';
+    overflow-x: hidden;
 }
 
 ::selection {
@@ -116,12 +117,14 @@ p {
 
     /* Navigationbar */
     .dropdown:hover {
-        width: 109px;
+        width: 128px;
     }
+
     .dropdown-content a {
         padding: 12px 16px;
-        font-size: 50px;
+        font-size: 20px;
     }
+
     #links a {
         font-size: 50px;
         width: 400px;

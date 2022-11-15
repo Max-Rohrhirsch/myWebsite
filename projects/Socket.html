@@ -47,7 +47,7 @@
                 min-height: 70px;
                 max-width: 450px;
                 right: 450px;
-                top: 270px;
+                top: 320px;
             }
 
             .usedElement {
@@ -105,6 +105,36 @@
                 }
             }
 
+            .particle {
+            	--x: 0;
+            	--y: 0;
+            	background-color: rebeccapurple;
+            	border-radius: 50%;
+            	position: absolute;
+            	top: 50%;
+            	left: 50%;
+            	height: 5px;
+            	width: 5px;
+            	z-index: -1;
+            }
+
+            .particle.move {
+            	animation: move 1000ms linear forwards;
+            }
+
+            @keyframes move {
+            	to {
+            		transform: translate(var(--x), var(--y));
+            	}
+
+            	95% {
+            		opacity: 1;
+            	}
+
+            	100% {
+            		opacity: 0;
+            	}
+            }
         </style>
     </head>
     <body>
@@ -119,8 +149,7 @@
             <div class="usedElement">Java</div>
         </div>
         <button class="but1">Zum Code</button>
-        <button id='runaway-btn'>Click Me</button>
-
+        <button id='runaway-btn' class="trigger_fworks">Click Me</button>
         <div class="dropdown">
             <div class="dropbtn"><i class="fa fa-bars" style="font-size: 25px; color: white"></i></div>
             <div class="dropdown-content">
@@ -155,5 +184,6 @@
                 button.style.left = `${left - 250}px`;
             }
         </script>
+        <script src="/home/max/Schreibtisch/Code/Portfolio/firework.js"></script>
     </body>
 </html>
