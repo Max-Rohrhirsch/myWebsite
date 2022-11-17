@@ -44,9 +44,10 @@
                 background-color: #222;
                 border-radius: 5px;
                 position: absolute;
+                display: block;
                 min-height: 70px;
                 max-width: 450px;
-                right: 450px;
+                margin-left: calc(40vw + 229px);
                 top: 320px;
             }
 
@@ -103,6 +104,9 @@
                     margin-top: 20px;
                     margin-left: 15vw;
                 }
+                .used {
+                    display: none;
+                }
             }
 
             .particle {
@@ -141,6 +145,7 @@
         <h1>Socket Server</h1>
         <img>
 
+        <button class="but1">Zum Code</button>
         <div class="used">
             <div class="usedElement">HTML</div>
             <div class="usedElement">CSS</div>
@@ -148,7 +153,6 @@
             <div class="usedElement">Node.js</div>
             <div class="usedElement">Java</div>
         </div>
-        <button class="but1">Zum Code</button>
         <button id='runaway-btn' class="trigger_fworks">Click Me</button>
         <div class="dropdown">
             <div class="dropbtn"><i class="fa fa-bars" style="font-size: 25px; color: white"></i></div>
