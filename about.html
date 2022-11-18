@@ -146,7 +146,24 @@
     </head>
     <body>
         <h1 id="welText">Ich bin IT Security Engineer</h1>
+        <script>
+            var i = 0;
+            var txt = 'Ich heiße Max Rohrhirsch bin 18 Jahre alt und wohne im Schwarzwald.'+
+            'Wie man unschwer erkennen kann, interesiere ich mich sehr für Informatik und bau im allgemeinen.' +
+            'Aktuell bin ich zwar noch Schüler, wurde aber schon auf ein Duales Studium' +
+            'Oder ihr Hovert drüber, und bekommt meinen Namen Angezeigt.' +
+            'in angewanter Informationstechnick angenommen. Dazu verbringe ich meine Freizeit viel mit Pfadfindern und wandern.';
+            var speed = 30;
 
+            function typeWriter() {
+              if (i < txt.length) {
+                document.getElementById("write").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+              }
+            }
+             window.onload = typeWriter;
+        </script>
         <div class="dropdown">
             <div class="dropbtn"><i class="fa fa-bars" style="font-size: 25px; color: white"></i></div>
             <div class="dropdown-content">
@@ -158,11 +175,7 @@
         </div>
 
         <h2>About</h2>
-        <p>
-            Ich heiße Max Rohrhirsch bin 18 Jahre alt und wohne im Schwarzwald.
-            Wie man unschwer erkennen kann, interesiere ich mich sehr für Informatik und bau im allgemeinen.
-            Aktuell bin ich zwar noch Schüler, wurde aber schon auf ein Duales Studium
-            in angewanter Informationstechnick angenommen. Dazu verbringe ich meine Freizeit viel mit Pfadfindern und wandern.
+        <p id="write">
         </p>
         <div id="skills">
             <img id="imgL">

@@ -91,6 +91,11 @@
                 border-color: #f00;
                 color: #f00;
             }
+            canvas {
+                position: absolute;
+                top: 0;
+                height: 150vh;
+            }
 
             /* Responsive */
             @media screen and (max-width: 1200px) {
@@ -144,7 +149,7 @@
     <body>
         <h1>Socket Server</h1>
         <img>
-
+        <script src="https://max-rohrhirsch.github.io/confetti/confetti.js"></script>
         <button class="but1">Zum Code</button>
         <div class="used">
             <div class="usedElement">HTML</div>
@@ -153,7 +158,7 @@
             <div class="usedElement">Node.js</div>
             <div class="usedElement">Java</div>
         </div>
-        <button id='runaway-btn' class="trigger_fworks">Click Me</button>
+        <button id='runaway-btn' class="trigger_fworks" onclick="toggleConfetti();setTimeout(() => {toggleConfetti();}, 5000);">Click Me</button>
         <div class="dropdown">
             <div class="dropbtn"><i class="fa fa-bars" style="font-size: 25px; color: white"></i></div>
             <div class="dropdown-content">
