@@ -1,0 +1,213 @@
+:root {
+    --main-special-color: #ee622a;
+    --main-bg-color: #111;
+    transition: 3s;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+
+/* ----------------------------- MAIN STUFF --------------------------------------- */
+
+.nav1 {
+    position: fixed;
+    background-color: #222;
+    border-bottom: 1px solid black;
+    width: 100%;
+
+    z-index: 2;
+}
+
+/* ---- DROPDOWN ---- */
+
+.dropbtn {
+    background-color: #222;
+    color: white;
+
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+
+    background-color: #222;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown-content a {
+    color: White;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover { background-color: #333 }
+  .dropdown:hover .dropdown-content { display: block }
+  .dropdown:hover .dropbtn { background-color: #2c7ead }
+
+
+/* ------------ Site Navigation ----------- */
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+
+    position: fixed;
+    top: 51px;
+    left: 0;
+
+    background-color: #222;
+    overflow-x: hidden;
+    z-index: 1;
+  }
+  
+  .sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+
+    display: block;
+    border: none;
+    background: none;
+
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .sidenav a:hover, .dropdown-btn:hover { background-color: #2c7ead }
+  
+  .active {
+    background-color: green;
+    color: white;
+  }
+  
+  .dropdown-container {
+    display: none;
+    background-color: #333;
+  }
+  
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav { padding-top: 15px }
+    .sidenav a { font-size: 18px }
+  }
+
+
+/* ------------ Main ----------- */
+.main {
+    display: block;
+    position:absolute;
+    top: 51px;
+    left: 200px;
+
+    padding: 50px;
+    font-size: 18px;
+
+    min-height: 100%;
+    width: 60vw;
+}
+
+.main h2 { font-size: 20px }
+
+.main a {
+    color: rgb(44, 172, 65);
+    margin-bottom: 20px;
+    display: block;
+}
+
+
+
+/* ------------ CODE ----------- */
+
+out {
+    display: block;
+    width: calc(100% - 40px);
+    background-color: #333;
+
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+code {
+    display: block;
+    width: calc(100% - 40px);
+    background-color: #333;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #777;
+}
+code::before {
+    content: "python";
+    color: var(--main-special-color);
+    background-color: #333;
+
+    top: -52px;
+    left: -21px;
+    position: relative;
+
+    
+    padding: 7px 15px;
+    border: 1px solid #777;
+    border-bottom: 1px solid #333;
+}
+
+
+/* ------------ Table ----------- */
+
+table {
+    width: calc(100% );
+    border: 1px solid #777;
+    margin-top: 50px;
+    border-collapse:collapse;
+}
+
+th {
+    border: 1px solid #777;
+    background-color: #333;
+    padding: 10px;
+
+}
+
+td {
+    border: 1px solid #777;
+    padding: 5px;
+    height: 40px;
+}
+
+
+/* ------------ Buttons ----------- */
+
+.prev, .next {
+    display: inline-block;
+    margin-top: 10px;
+}
+.prev:hover, .next:hover { cursor: pointer }
+
+.prev { float: left }
+.next { float: right }
