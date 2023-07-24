@@ -12,10 +12,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="/home/max/Schreibtisch/Code-master/Portfolio/docStyle.css">
-        <link rel="icon" type="image/x-icon" href="Bilder/favicon.ico">
-
-        <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+        <link rel="stylesheet" href="/docStyle.css">
+        <link rel="icon" type="image/x-icon" href="/Bilder/favicon.ico">
     </head>
     <body>
         <!-- ------ TOP NAVIGATION BAR ----- -->
@@ -23,33 +21,61 @@
             <div class="dropdown" style="float:left;">
                 <button class="dropbtn">Languages</button>
                 <div class="dropdown-content" style="left:0;">
-                    <a href="#">SQL</a>
-                    <a href="#">Python</a>
-                    <a href="#">Java</a>
+                    <a href="/documentation/languages/sql/sql.html">SQL</a>
+                    <a href="/documentation/language/python/python.html">Python</a>
+                    <a href="/documentation/language/java/java.html">Java</a>
+                    <a href="/documentation/language/js/js.html">JS</a>
+                    <a href="/documentation/language/css/css.html">CSS</a>
+                    <a href="/documentation/language/c/c.html">C</a>
+                    <a href="/documentation/language/cpp/cpp.html">C++</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">Small Language</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/documentation/small/bash/bash.html">Bash</a>
+                    <a href="/documentation/small/rust/rust.html">Rust</a>
+                    <a href="/documentation/small/go/go.html">GO</a>
+                    <a href="/documentation/small/csharp/csharp.html">C#</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">libaries</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/documentation/libaries/socket/socket.html">Socket</a>
+                    <a href="/documentation/libaries/tenserflow/tenserflow.html">Tenserflow</a>
+                    <a href="/documentation/libaries/regex/regex.html">Regex</a>
+                    <a href="/documentation/libaries/numpy/numpy.html">Numpy</a>
                 </div>
             </div>
             <div class="dropdown" style="float:left;">
                 <button class="dropbtn">Special</button>
                 <div class="dropdown-content" style="left:0;">
-                    <a href="#">Computer</a>
-                    <a href="#">Logikgates</a>
-                    <a href="#">Linux</a>
+                    <a href="/documentation/special/computer/computer.html">Computer</a>
+                    <a href="/documentation/special/logik/logik.html">Logikgates</a>
+                    <a href="/documentation/special/linux/linux.html">Linux</a>
+                    <a href="/documentation/special/arduino/arduino.html">Arduino</a>
+                    <a href="/documentation/special/game/game.html">Game Maker</a>
+                    <a href="/documentation/special/unity/unity.html">Unity</a>
+                    <a href="/documentation/special/os/os.html">OS</a>
+                    <a href="/documentation/special/hacking/hacking.html">Hacking</a>
                 </div>
             </div>
             <div class="dropdown" style="float:left;">
                 <button class="dropbtn">Extensions/API</button>
                 <div class="dropdown-content" style="left:0;">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="/documentation/extension/chrome/chrome.html">Chrome Extension</a>
+                    <a href="/documentation/extension/discord/discord.html">Discord Bot</a>
+                    <a href="/documentation/extension/computercraft/computercraft.html">Computercraft</a>
                 </div>
             </div>
             <div class="dropdown" style="float:left;">
                 <button class="dropbtn">SCHOOL</button>
                 <div class="dropdown-content" style="left:0;">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="/documentation/school/math/math.html">Math</a>
+                    <a href="/documentation/school/physik/physik.html">Physik</a>
+                    <a href="/documentation/school/bwl/bwl.html">BWL</a>
+                    <a href="/documentation/school/it/it.html">IT</a>
                 </div>
             </div>
         </nav>
@@ -135,18 +161,29 @@ print("hello world")
                   <td>Giovanni Rovelli</td>
                   <td>Italy</td>
                 </tr>
-              </table>
+            </table>
+
+            <img src="/Bilder/ich 4.jpg" class="modal-hover-opacity" onclick="onClick(this)">
+            
+               <iframe src="https://ide.geeksforgeeks.org/online-python3-compiler/91603b01-1c6e-49d3-af04-aa954c896fea" height="300" width="400"></iframe>
 
 
-              <a class="prev">Previous</a>
-              <a class="next">Next</a>
+            <a class="pre">Previous</a>
+            <a class="next">Next</a>
 
 
         </div>
 
-        <!-- ------ FOR SYNTAX HIGHLIGHTING ----- -->
-        <script src="cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script>
+
+
+
+        <div id="modal01" class="modal" onclick="this.style.display='none'">
+            <span class="close">X</span>
+            <div class="modal-content">
+              <img id="img01" style="max-width:100%">
+            </div>
+          </div>
+
 
         <!-- ------ SCRIPT FOR DROPDOWN ----- -->
         <script>
@@ -163,6 +200,12 @@ print("hello world")
                   dropdownContent.style.display = "block";
                 }
               });
+            }
+        </script>
+        <script>
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
             }
         </script>
     </body>
