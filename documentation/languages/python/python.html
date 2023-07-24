@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title>Documentation</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" lang="en" content="Documentation of many things I learned">
+        <meta name="keywords" content="HTML, CSS, JavaScript, Coding, max">
+        <meta name="author" content="Rohrhirsch Max">
+                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="/home/max/Schreibtisch/Code-master/Portfolio/docStyle.css">
+        <link rel="icon" type="image/x-icon" href="Bilder/favicon.ico">
+    </head>
+    <body>
+        <!-- ------ TOP NAVIGATION BAR ----- -->
+        <nav class="nav1">
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">Languages</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/language/sql/sql.html">SQL</a>
+                    <a href="/language/python/python.html">Python</a>
+                    <a href="/language/java/java.html">Java</a>
+                    <a href="/language/js/js.html">JS</a>
+                    <a href="/language/css/css.html">CSS</a>
+                    <a href="/language/c/c.html">C</a>
+                    <a href="/language/cpp/cpp.html">C++</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">Small Language</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/small/bash/bash.html">Bash</a>
+                    <a href="/small/rust/rust.html">Rust</a>
+                    <a href="/small/go/go.html">GO</a>
+                    <a href="/small/csharp/csharp.html">C#</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">libaries</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/libaries/socket/socket.html">Socket</a>
+                    <a href="/libaries/tenserflow/tenserflow.html">Tenserflow</a>
+                    <a href="/libaries/regex/regex.html">Regex</a>
+                    <a href="/libaries/numpy/numpy.html">Numpy</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">Special</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/special/computer/computer.html">Computer</a>
+                    <a href="/special/logik/logik.html">Logikgates</a>
+                    <a href="/special/linux/linux.html">Linux</a>
+                    <a href="/special/arduino/arduino.html">Arduino</a>
+                    <a href="/special/game/game.html">Game Maker</a>
+                    <a href="/special/unity/unity.html">Unity</a>
+                    <a href="/special/os/os.html">OS</a>
+                    <a href="/special/hacking/hacking.html">Hacking</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">Extensions/API</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/extension/chrome/chrome.html">Chrome Extension</a>
+                    <a href="/extension/discord/discord.html">Discord Bot</a>
+                    <a href="/extension/computercraft/computercraft.html">Computercraft</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn">SCHOOL</button>
+                <div class="dropdown-content" style="left:0;">
+                    <a href="/school/math/math.html">Math</a>
+                    <a href="/school/physik/physik.html">Physik</a>
+                    <a href="/school/bwl/bwl.html">BWL</a>
+                    <a href="/school/it/it.html">IT</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ------ SIDE NAVIGATION BAR ----- -->
+        <div class="sidenav">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#clients">Clients</a>
+            <a href="#contact">Contact</a>
+            <button class="dropdown-btn">Dropdown 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+            <a href="#contact">Search</a>
+        </div>
+
+        <!-- ------ MAIN CONTENT ----- -->
+        <div class="main">
+            <h1>Python</h1>
+            <hr>
+            <p>Booleans represent one of two values: <colored>True</colored> or <colored>False</colored>.</p>
+            <hr>
+            <h2>Advantages of Python 3:</h2>
+            <p>
+                Python 3 is a popular high-level programming language used for a wide variety of applications. Here are some basics of Python 3 that you should know:
+                Variables: In Python 3, variables are created by assigning a value to a name. For example, x = 5 creates a variable called x and assigns the value 5 to it.
+                Data types: Python 3 supports several built-in data types, including integers, floats, strings, booleans, lists, tuples, and dictionaries.
+                <br>
+                <a href="#">Nice website</a>
+            </p>
+
+
+            <out>
+                Test in python
+            </out>
+
+
+            <pre>
+                <code class="language-python">
+print("hello world")
+                </code>
+            </pre>
+
+
+
+            <a class="pre">Previous</a>
+            <a class="next">Next</a>
+
+
+        </div>
+
+
+
+
+        <div id="modal01" class="modal" onclick="this.style.display='none'">
+            <span class="close">X</span>
+            <div class="modal-content">
+              <img id="img01" style="max-width:100%">
+            </div>
+          </div>
+
+
+        <!-- ------ SCRIPT FOR DROPDOWN ----- -->
+        <script>
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+            
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                  dropdownContent.style.display = "none";
+                } else {
+                  dropdownContent.style.display = "block";
+                }
+              });
+            }
+        </script>
+        <script>
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
+            }
+        </script>
+    </body>
+</html>
