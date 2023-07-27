@@ -101,77 +101,47 @@
         <div class="main">
             <h1>Python</h1>
             <hr>
-            <h2>Vars</h2>
 
+            <h2>Tkinter</h2>
             <pre>
-                <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+                <code class="language-python"> 
+from tkinter import *
 
-name = input("Enter your name: ") //scanner
+window = Tk()
 
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
+myLabel = Label(window, text="Hello World")
+myLabel.pack()
 
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
-}
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
-                </code>
-            </pre>
-            <h2>Functions</h2>
-            <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+window.mainloop()
                 </code>
             </pre>
 
-            <h2>If and Loops</h2>
+            <h2>Button</h2>
             <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
+                <code class="language-python"> 
+myButton = Button(top, text="knopf")
+ma.pack()
+ma.bind('Button-1', myFunction)
+
+def myFunction(event):
+    ...
                 </code>
             </pre>
 
+            <h2>Canvas</h2>
+            <pre>
+                <code class="language-python"> 
+canv = Canvas(myWindow, width = 400, height = 400, bg='grey')
 
+canv.create_line(<green>x1, y1, x2, y2</green>, fill='color', width=20)
 
+canv.create_rectangle(<green>x1, y1, x2, y2</green>)
 
+canv.create_oval(<green>...</green>)
 
+canv.delete('all') //deletes all                                                                                                                                                                                                                                                                                                                                        
+                </code>
+            </pre>
 
             <a class="pre">Previous</a>
             <a class="next">Next</a>

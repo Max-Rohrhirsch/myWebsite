@@ -82,93 +82,129 @@
 
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
-            <a href="/documentation/languages/python/python.html">Basics</a>
-            <a href="/documentation/languages/python/know.html">good to know</a>
-            <a href="/documentation/languages/python/mid.html">mid</a>
-            <button class="dropdown-btn">Special 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="/documentation/languages/python/array.html">Array</a>
-                <a href="/documentation/languages/python/build.html">Build in</a>
-                <a href="/documentation/languages/python/exception.html">Exceptions</a>
-                <a href="/documentation/languages/python/file.html">File editing</a>
-                <a href="/documentation/languages/python/inlign.html">Inline</a>
-            </div>
+            <a href="/documentation/languages/chrome/chrome.html">Basics</a>
+            <a href="/documentation/languages/chrome/know.html">good to know</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
+            <h1>Chrome extension</h1>
             <hr>
-            <h2>Vars</h2>
 
+            <p>
+                You need 4 files:
+                - manifest.json (most important)
+                - index.html (the GUI to interact with extension)
+                - script.js (script in the Extension pop up for comunication)
+                - injected.js (edditing the webpage)
+            </p>
+
+            <h2>manifest.json</h2>
             <pre>
-                <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
-
-name = input("Enter your name: ") //scanner
-
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
-
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
+                <code class="language-json">
+{
+"name": "Colored Calender",
+"version": "1.2",
+"description": "Colores the background of specific days in your google calender.",
+"manifest_version": 3,
+"permissions": ["scripting", "activeTab","tabs", "storage"],
+"action": {
+    "default_popup": "index.html",
+    "default_title": "myExtension"
+},
+"host_permission": ["https://calendar.google.com/*"],
+"content_scripts": [
+    {
+        "matches": ["https://calendar.google.com/*"],
+        "js": ["inject.js"]
+    }
+]
+,"content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
 }
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
+}
                 </code>
             </pre>
-            <h2>Functions</h2>
+
+            <h2>index.html</h2>
             <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+                <code class="language-html">
+&lt;meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> &lt;!-- Very important --&gt;
+&lt;script type="text/javascript" src="script.js"></script>
+        
+&lt;div id="add">
+    &lt;form id="form">
+        Von: &lt;input type="date" id="inp1"> &lt;br>
+        Bis: &lt;input type="date" id="inp2"> &lt;br>
+        Color: &lt;input type="text" maxlength="3"  id="inp3"> &lt;br>
+        &lt;button  id="submit">+&lt;/button>
+    &lt;/form>
+&lt;/div>
                 </code>
             </pre>
 
-            <h2>If and Loops</h2>
+            <h2>index.html</h2>
             <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
+                <code class="language-html">
+&lt;meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> &lt;!-- Very important --&gt;
+&lt;script type="text/javascript" src="script.js"></script>
+        
+&lt;div id="add">
+    &lt;form id="form">
+        Von: &lt;input type="date" id="inp1"> &lt;br>
+        Bis: &lt;input type="date" id="inp2"> &lt;br>
+        Color: &lt;input type="text" maxlength="3"  id="inp3"> &lt;br>
+        &lt;button  id="submit">+&lt;/button>
+    &lt;/form>
+&lt;/div>
                 </code>
             </pre>
 
+            <h2>script.js</h2>
+            <pre>
+                <code class="language-js">
+document.onreadystatechange = () => { // only when loaded. Otherwise you get an error, when you try to interact with elements, that dont exist
+    if (document.readyState === 'complete') {
+    
+        //Add a Date
+        document.getElementById("submit").addEventListener("click", (e) => {
+            chrome.storage.sync.get(["inputs"], (result) => {       // async syncronise cookies
+                chrome.storage.sync.set({"inputs": 
+                result["inputs"].concat([[
+                    document.getElementById("inp1").value, 
+                    document.getElementById("inp2").value, 
+                    document.getElementById("inp3").value
+                ]])})
+            })
+        })
+    }
+}
+                </code>
+            </pre>
 
+            <h2>inject.js</h2>
+            <pre>
+                <code class="language-js">
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+
+        // Store data in sync storage
+        chrome.storage.sync.set({"inputs": [['2023-07-27', '2023-08-31', 'cfc'], ['2023-09-5', '2023-09-30', 'cfc'], ['2023-10-01', '2024-01-07', 'fcc']]});
+
+
+
+
+        // read all Dates on change cookies
+        chrome.storage.onChanged.addListener((changes, area) => {
+            if (area == "sync") {
+                ...
+            }
+        })
+    }
+};
+                </code>
+            </pre>
 
 
 

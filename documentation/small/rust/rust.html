@@ -82,100 +82,76 @@
 
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
-            <a href="/documentation/languages/python/python.html">Basics</a>
-            <a href="/documentation/languages/python/know.html">good to know</a>
-            <a href="/documentation/languages/python/mid.html">mid</a>
-            <button class="dropdown-btn">Special 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="/documentation/languages/python/array.html">Array</a>
-                <a href="/documentation/languages/python/build.html">Build in</a>
-                <a href="/documentation/languages/python/exception.html">Exceptions</a>
-                <a href="/documentation/languages/python/file.html">File editing</a>
-                <a href="/documentation/languages/python/inlign.html">Inline</a>
-            </div>
+            <a href="/documentation/small/rust/rust.html">Basics</a>
+            <a href="/documentation/small/rust/advanced.html">Advanced</a>
+            <a href="/documentation/small/rust/examples.html">Examples</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
+            <h1>Rust</h1>
             <hr>
-            <h2>Vars</h2>
+
+            <out>
+                go run doc.go
+            </out>
+
+            <h2>Basics</h2>
 
             <pre>
-                <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+                <code class="language-rust">
+mod klassenname; // import
 
-name = input("Enter your name: ") //scanner
+myClass::myFunction(); // call a function
 
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
-
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
+<orange>pub</orange> fn name() {
+    println!("...");
 }
-dictionary["age"] //Outputs -> 19
+fn main() {...} // main function
 
+println!("Number: {}", 1);
+println!("Name: {name}", name = "...");
+println!("Age: {%d}", 1);
 
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
+let <orange>mut</orange> name = "...";
 
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
+const ID: i32 = ...;
+let myString = String::from("hello");
                 </code>
             </pre>
-            <h2>Functions</h2>
+
             <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+                <code class="language-rust">
+let array: [i32; 5] = [...];
+
+loop {...} // infinite loop
+while <green>...</green> {...}
+for x in ... {...}
                 </code>
             </pre>
 
-            <h2>If and Loops</h2>
-            <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
-                </code>
-            </pre>
-
-
-
-
-
+            <table>
+                <tr>
+                  <th>Functions</th>
+                </tr>
+                <tr>
+                  <td>.len()</td>
+                </tr>
+                <tr>
+                  <td>.push(...)</td>
+                </tr>
+                <tr>
+                  <td>.contains(...)</td>
+                </tr>
+                <tr>
+                  <td>.replace()</td>
+                </tr>
+            </table>
 
             <a class="pre">Previous</a>
             <a class="next">Next</a>
         </div>
+
         <div id="modal01" class="modal" onclick="this.style.display='none'">
             <span class="close">X</span>
             <div class="modal-content">

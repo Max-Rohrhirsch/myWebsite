@@ -82,94 +82,55 @@
 
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
-            <a href="/documentation/languages/python/python.html">Basics</a>
-            <a href="/documentation/languages/python/know.html">good to know</a>
-            <a href="/documentation/languages/python/mid.html">mid</a>
-            <button class="dropdown-btn">Special 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="/documentation/languages/python/array.html">Array</a>
-                <a href="/documentation/languages/python/build.html">Build in</a>
-                <a href="/documentation/languages/python/exception.html">Exceptions</a>
-                <a href="/documentation/languages/python/file.html">File editing</a>
-                <a href="/documentation/languages/python/inlign.html">Inline</a>
-            </div>
+            <a href="/documentation/special/arduino/arduino.html">Basics</a>
+            <a href="/documentation/special/arduino/advanced.html">Advanced</a>
+            <a href="/documentation/special/arduino/examples.html">Examples</a>
+        </div>
+        <button class="dropdown-btn">Sensors 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="/documentation/special/arduino/simple.html">Simple</a>
+            <a href="/documentation/special/arduino/remote.html">Remote</a>
+            <a href="/documentation/special/arduino/uhr.html">Uhr</a>
+            <a href="/documentation/special/arduino/servo.html">Servo</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
+            <h1>Arduino</h1>
             <hr>
-            <h2>Vars</h2>
 
             <pre>
                 <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+const int buttonPin = 2;  // the number of the pushbutton pin
+const int ledPin = 13;    // the number of the LED pin
 
-name = input("Enter your name: ") //scanner
+// variables will change:
+int buttonState = 0;  // variable for reading the pushbutton status
 
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
-
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
+void setup() {
+    // initialize the LED pin as an output:
+    pinMode(ledPin, OUTPUT);
+    // initialize the pushbutton pin as an input:
+    pinMode(buttonPin, INPUT);
 }
-dictionary["age"] //Outputs -> 19
 
+void loop() {
+    // read the state of the pushbutton value:
+    buttonState = digitalRead(buttonPin);
 
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
+    // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+    if (buttonState == HIGH) {
+    // turn LED on:
+    digitalWrite(ledPin, HIGH);
+    } else {
+    // turn LED off:
+    digitalWrite(ledPin, LOW);
+    }
+}
                 </code>
             </pre>
-            <h2>Functions</h2>
-            <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
-                </code>
-            </pre>
-
-            <h2>If and Loops</h2>
-            <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
-                </code>
-            </pre>
-
-
-
 
 
 

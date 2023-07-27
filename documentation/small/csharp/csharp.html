@@ -82,95 +82,33 @@
 
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
-            <a href="/documentation/languages/python/python.html">Basics</a>
-            <a href="/documentation/languages/python/know.html">good to know</a>
-            <a href="/documentation/languages/python/mid.html">mid</a>
-            <button class="dropdown-btn">Special 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="/documentation/languages/python/array.html">Array</a>
-                <a href="/documentation/languages/python/build.html">Build in</a>
-                <a href="/documentation/languages/python/exception.html">Exceptions</a>
-                <a href="/documentation/languages/python/file.html">File editing</a>
-                <a href="/documentation/languages/python/inlign.html">Inline</a>
-            </div>
+            <a href="/documentation/small/csharp/csharp.html">Basics</a>
+            <a href="/documentation/small/csharp/advanced.html">Advanced</a>
+            <a href="/documentation/small/csharp/examples.html">Examples</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
+            <h1>C#</h1>
             <hr>
-            <h2>Vars</h2>
 
+			<h2>Example</h2>
             <pre>
-                <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+                <code class="language-csharp">
+using System;
 
-name = input("Enter your name: ") //scanner
-
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
-
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
+namespace HelloWorld
+{
+	class Program
+	{
+	static void Main(string[] args)
+	{
+		Console.WriteLine("Hello World!");    
+	}
+	}
 }
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
                 </code>
             </pre>
-            <h2>Functions</h2>
-            <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
-                </code>
-            </pre>
-
-            <h2>If and Loops</h2>
-            <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
-                </code>
-            </pre>
-
-
-
-
 
 
             <a class="pre">Previous</a>

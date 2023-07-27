@@ -82,96 +82,123 @@
 
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
-            <a href="/documentation/languages/python/python.html">Basics</a>
-            <a href="/documentation/languages/python/know.html">good to know</a>
-            <a href="/documentation/languages/python/mid.html">mid</a>
-            <button class="dropdown-btn">Special 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="/documentation/languages/python/array.html">Array</a>
-                <a href="/documentation/languages/python/build.html">Build in</a>
-                <a href="/documentation/languages/python/exception.html">Exceptions</a>
-                <a href="/documentation/languages/python/file.html">File editing</a>
-                <a href="/documentation/languages/python/inlign.html">Inline</a>
-            </div>
+            <a href="/documentation/languages/sql/sql.html">Basics</a>
+            <a href="/documentation/languages/sql/mid.html">mid</a>
+            <a href="/documentation/languages/sql/server.html">server</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
+            <h1>SQL</h1>
             <hr>
-            <h2>Vars</h2>
 
+            <h2>Basics</h2>
             <pre>
-                <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+                <code class="language-sql">
+SELECT <green>*</green> <orange>AS</orange> <green>aliasName</green>FROM <green>table</green>
+Where <green>condition</green> -- Selects after beeing grouped
+GROUP BY <green>column</green> 
+HAVING <green>contition</green> -- Selects before beeing grouped
+ORDER BY <green>column</green> <orange>ASC/ DESC</orange>
+LIMIT <green>30</green> -- only first 30 lines
 
-name = input("Enter your name: ") //scanner
-
-print(name)
+/* Comment */
                 </code>
             </pre>
-            <h2>Arrays, Tuples, ...</h2>
+            <p>ASC is from small to big; A - Z (Default)</p>
+            <p>DESC is from big to small; Z - A</p>
+            <hr>
 
+            <h2>Joins</h2>
             <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
-}
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
-                </code>
-            </pre>
-            <h2>Functions</h2>
-            <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+                <code class="language-sql">
+SELECT <green>*</green> FROM <green>table</green>
+JOIN <green>otherTable</green> ON <green>t1.name = t2.name</green>
+Where <green>condition</green>
+GROUP BY <green>column</green> 
+ORDER BY <green>column</green> <orange>ASC/ DESC</orange>
+LIMIT <green>30</green> -- only first 30 lines
                 </code>
             </pre>
 
-            <h2>If and Loops</h2>
+            <table>
+                <tr>
+                  <th>Methode</th>
+                </tr>
+                <tr>
+                  <td>MIN()</td>
+                </tr>
+                <tr>
+                  <td>MAX()</td>
+                </tr>
+                <tr>
+                  <td>COUNT()</td>
+                </tr>
+                <tr>
+                  <td>AVG()</td>
+                </tr>
+                <tr>
+                  <td>SUM()</td>
+                </tr>
+            </table>
+            <hr>
+            <h2>Wildcards</h2>
+            <table>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>%</td>
+                  <td>Represents zero or more characters</td>
+                </tr>
+                <tr>
+                  <td>_</td>
+                  <td>Represents a single character</td>
+                </tr>
+                <tr>
+                  <td>[]</td>
+                  <td>Represents any single character within the brackets</td>
+                </tr>
+                <tr>
+                  <td>^</td>
+                  <td>Represents any character not in the brackets</td>
+                </tr>
+                <tr>
+                  <td>-</td>
+                  <td>Represents any single character within the specified range</td>
+                </tr>
+            </table>
+            <out>
+                WHERE CustomerName LIKE 'a%'
+            </out>
+            <hr>
+
+            <h2>Create</h2>
             <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
+                <code class="language-sql">
+CREATE DATABASE databasename;
+DROP DATABASE databasename;
+
+
+CREATE TABLE Persons (
+    PersonID int NOT NULL,
+    LastName varchar(255) UNIQUE,
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255),
+    PRIMARY KEY (PersonID),
+    FOREIGN KEY (PersonID) REFERENCES ORDER(PersonID)
+);
+DROP TABLE table_name;
+
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+DELETE FROM table_name WHERE condition;
                 </code>
             </pre>
-
-
-
-
-
 
             <a class="pre">Previous</a>
             <a class="next">Next</a>

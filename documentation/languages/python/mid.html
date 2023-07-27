@@ -101,73 +101,74 @@
         <div class="main">
             <h1>Python</h1>
             <hr>
-            <h2>Vars</h2>
 
+            <h2>Strings</h2>
             <pre>
                 <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+fString = f"Your age is: {age}"
+rString = r"Hi\nHello"
 
-name = input("Enter your name: ") //scanner
-
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
-
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
-}
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
-                </code>
-            </pre>
-            <h2>Functions</h2>
-            <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+fString[1:3] // Outputs -> our
+myString.split() // Outputs -> ["your", "age", "is:", age]
+// split split on default on " "
                 </code>
             </pre>
 
-            <h2>If and Loops</h2>
+            <h2>Array</h2>
             <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
+                <code class="language-python"> 
+myArray = [1:20:4] // from, to, stepps
+myArray = [::-1] // reverses Array
                 </code>
             </pre>
 
+            <h2>dictionary</h2>
+            <pre>
+                <code class="language-python"> 
+for key, value in myDictionary.items()
+    print(f'{key}: {value}')
+                </code>
+            </pre>
+
+            <table>
+                <tr>
+                  <th>Method</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>items()</td>
+                  <td>Returns a list containing a tuple for each key value pair</td>
+                </tr>
+                <tr>
+                  <td>keys()</td>
+                  <td>Returns a list containing the dictionary's keys</td>
+                </tr>
+                <tr>
+                  <td>values()</td>
+                  <td>Returns a list of all the values in the dictionary</td>
+                </tr>
+                <tr>
+                    <td>enumerate(array)</td>
+                    <td>Returns two elemenets</td>
+                  </tr>
+                  <tr>
+            </table>
+
+
+            <hr>
+            <h2>yield</h2>
+            <p>Is a Generator</p>
+            <pre>
+                <code class="language-python">
+def myGenerator(from, to, steps):
+    i = from
+    while i <= to:
+        yield I
+        i += steps
+
+print(myGenerator(1, 10, 2))
+                </code>
+            </pre>
 
 
 

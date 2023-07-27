@@ -99,76 +99,55 @@
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
+            <h1>Java</h1>
             <hr>
-            <h2>Vars</h2>
 
+            <h2>Threads</h2>
             <pre>
-                <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
-
-name = input("Enter your name: ") //scanner
-
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
-
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
-
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
+                <code class="language-java">
+public class Main extends Thread {
+    public static int amount = 0;
+    
+    public static void main(String[] args) {
+        Main thread = new Main();
+        thread.start();
+        // Wait for the thread to finish
+        while(thread.isAlive()) {
+            System.out.println("Waiting...");
+        }
+        // Update amount and print its value
+        System.out.println("Main: " + amount);
+        amount++;
+        System.out.println("Main: " + amount);
+    }
+    public void run() {
+        amount++;
+    }
 }
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
                 </code>
             </pre>
-            <h2>Functions</h2>
+
+            <h2>File handeling</h2>
             <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+                <code class="language-java">
+import java.io.File;  // Import the File class
+
+public class GetFileInfo { 
+    public static void main(String[] args) {
+        File myObj = new File("filename.txt");
+        if (myObj.exists()) {
+            System.out.println("File name: " + myObj.getName());
+            System.out.println("Absolute path: " + myObj.getAbsolutePath());
+            System.out.println("Writeable: " + myObj.canWrite());
+            System.out.println("Readable " + myObj.canRead());
+            System.out.println("File size in bytes " + myObj.length());
+        } else {
+            System.out.println("The file does not exist.");
+        }
+    }
+}
                 </code>
             </pre>
-
-            <h2>If and Loops</h2>
-            <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
-                </code>
-            </pre>
-
-
 
 
 

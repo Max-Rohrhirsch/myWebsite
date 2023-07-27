@@ -101,72 +101,25 @@
         <div class="main">
             <h1>Python</h1>
             <hr>
-            <h2>Vars</h2>
 
+            <h2>One liners</h2>
             <pre>
                 <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+array = array[::-1] // reverses array
 
-name = input("Enter your name: ") //scanner
+array = [i for i in range(6)]
 
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
+lambda x: 3*x + 1
 
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
+# Fibonacci Python One-Liner
+lambda x: x if x<=1 else fib(x-1) + fib(x-2)
 
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
-}
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
-                </code>
-            </pre>
-            <h2>Functions</h2>
-            <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+myBool = True if condition else False
                 </code>
             </pre>
 
-            <h2>If and Loops</h2>
-            <pre>
-                <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
-                </code>
-            </pre>
+
+
 
 
 

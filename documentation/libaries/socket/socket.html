@@ -82,100 +82,62 @@
 
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
-            <a href="/documentation/languages/python/python.html">Basics</a>
-            <a href="/documentation/languages/python/know.html">good to know</a>
-            <a href="/documentation/languages/python/mid.html">mid</a>
-            <button class="dropdown-btn">Special 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="/documentation/languages/python/array.html">Array</a>
-                <a href="/documentation/languages/python/build.html">Build in</a>
-                <a href="/documentation/languages/python/exception.html">Exceptions</a>
-                <a href="/documentation/languages/python/file.html">File editing</a>
-                <a href="/documentation/languages/python/inlign.html">Inline</a>
-            </div>
+            <a href="/documentation/languages/socket/socket.html">Basics</a>
+            <a href="/documentation/languages/socket/examples.html">Implementation</a>
+            <a href="/documentation/languages/socket/more.html">More</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
-            <hr>
-            <h2>Vars</h2>
-
+            <h1>Python Sockets</h1>
+            
+            <h2>Server</h2>
             <pre>
                 <code class="language-python">
-v1 = 3
-v2 = "hi"
-v3 = [1, 2, 3]
+from socket import AF_INET, SOCK_STREAM, socket
 
-name = input("Enter your name: ") //scanner
+mySocket = socket(AF_INET, SOCK_STREAM)
+mySocket.connect((<green>IP</green>, <green>Port</green>))
 
-print(name)
-                </code>
-            </pre>
-            <h2>Arrays, Tuples, ...</h2>
+mySocket.send(bytes('<green>...</green>', 'utf8'))
 
-            <pre>
-                <code class="language-python">
-myArray = [1, "hallo", 1.223]
-myArray[2] //Outputs -> 1.223
+mySocket.recv(10024).decode('utf8')
 
-myArray.extend([3, "element"])
-myArray.insert(2, "...") //replaces second element
-myArray.append("hi")
-myArray.remove("hi")
-myArray.index("hallo") //returns the Index of the element
-
-
-dictionary = {
-    name: "max",
-    age: "19"
-}
-dictionary["age"] //Outputs -> 19
-
-
-myTuple = ("apple", 83, 1)
-myTuple[1] //Outputs -> 83
-// Like a Array, but it cant be changed after being declared.
-
-
-mySet = {1, "two", 3, 4.1}
-// unordered, unchangeable*, and unindexed
-// not changeble but can be removed or added.
-
-                </code>
-            </pre>
-            <h2>Functions</h2>
-            <pre>
-                <code class="language-python">
-def name(param, param2 = 0):
-    print("hi")
-    return param + param2
+mySocket.close()
                 </code>
             </pre>
 
-            <h2>If and Loops</h2>
+            <h2>Client</h2>
             <pre>
                 <code class="language-python">
-if True: 
-    while False:
-        pass
-elif condition2:
-    for i in range(0,10,2):
-        print(i)
-else:
+from socket import AF_INET, SOCK_STREAM, socket
+
+mySocket = socket(AF_INET, SOCK_STREAM)
+mySocket.bind(<green>Port</green>)
+mySocket.listen()
+client, addr = mySocket.accept()
+
+mySocket.close()
                 </code>
             </pre>
 
+            <h2>Threads</h2>
+            <pre>
+                <code class="language-python">
+from threading import Thread
 
+Thread(target = <green>myFunction</green>).start()
+Thread(target = <green>myFunction</green>, args = (<green>client, addr</green>)).start()
 
-
+.close()
+                </code>
+            </pre>
 
 
             <a class="pre">Previous</a>
             <a class="next">Next</a>
         </div>
+
         <div id="modal01" class="modal" onclick="this.style.display='none'">
             <span class="close">X</span>
             <div class="modal-content">

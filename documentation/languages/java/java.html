@@ -82,101 +82,97 @@
 
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#clients">Clients</a>
-            <a href="#contact">Contact</a>
-            <button class="dropdown-btn">Dropdown 
+            <a href="/documentation/languages/python/python.html">Basics</a>
+            <a href="/documentation/languages/python/know.html">good to know</a>
+            <a href="/documentation/languages/python/mid.html">mid</a>
+            <button class="dropdown-btn">Special 
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                <a href="/documentation/languages/python/array.html">Array</a>
+                <a href="/documentation/languages/python/build.html">Build in</a>
+                <a href="/documentation/languages/python/exception.html">Exceptions</a>
+                <a href="/documentation/languages/python/file.html">File editing</a>
+                <a href="/documentation/languages/python/inlign.html">Inline</a>
             </div>
-            <a href="#contact">Search</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
         <div class="main">
-            <h1>Python</h1>
+            <h1>Java</h1>
             <hr>
-            <p>Booleans represent one of two values: <colored>True</colored> or <colored>False</colored>.</p>
-            <hr>
-            <h2>Advantages of Python 3:</h2>
-            <p>
-                Python 3 is a popular high-level programming language used for a wide variety of applications. Here are some basics of Python 3 that you should know:
-                Variables: In Python 3, variables are created by assigning a value to a name. For example, x = 5 creates a variable called x and assigns the value 5 to it.
-                Data types: Python 3 supports several built-in data types, including integers, floats, strings, booleans, lists, tuples, and dictionaries.
-                <br>
-                <a href="#">Nice website</a>
-            </p>
 
-
-            <out>
-                const arr = ["Item1", "Item2", "Item3", ...];
-            </out>
-
-
+            <h2>Basics</h2>
             <pre>
-                <code class="language-python">
-print("hello world")
+                <code class="language-java">
+public class Armstrong  extends Logik {
+
+    public static void main(String[] args) {
+
+        int number = 371, originalNumber, remainder, result = 0;
+
+        originalNumber = number;
+
+        while (originalNumber != 0)
+        {
+            remainder = originalNumber % 10;
+            result += Math.pow(remainder, 3);
+            originalNumber /= 10;
+        }
+
+        if(result == number)
+            System.out.println(number + " is an Armstrong number.");
+        else
+            System.out.println(number + " is not an Armstrong number.");
+    }
+}
+
+String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+                </code>
+            </pre>
+
+            <h2>Input</h2>
+            <pre>
+                <code class="language-java">
+import java.util.Scanner;  // Import the Scanner class
+
+class Main {
+    public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+    System.out.println("Enter username");
+
+    String userName = myObj.nextLine();  // Read user input
+    System.out.println("Username is: " + userName);  // Output user input
+    }
+}
+                </code>
+            </pre>
+
+            <h2>Lists</h2>
+            <pre>
+                <code class="language-java">
+import java.util.ArrayList; // import the ArrayList class
+ArrayList&lt;String> cars = new ArrayList&lt;String>(); // Create an ArrayList object
+cars.add("Mazda");
+cars.get(0);
+cars.set(0, "Opel");
+cars.remove(0);
+cars.size();
+
+
+import java.util.HashMap; // import the HashMap class
+HashMap&lt;String, String> capitalCities = new HashMap&lt;String, String>();
+capitalCities.put("England", "London");
+capitalCities.get("England");
+capitalCities.remove("England");
+capitalCities.size();
                 </code>
             </pre>
 
 
-            <table>
-                <tr>
-                  <th>Company</th>
-                  <th>Contact</th>
-                  <th>Country</th>
-                </tr>
-                <tr>
-                  <td>Alfreds Futterkiste</td>
-                  <td>Maria Anders</td>
-                  <td>Germany</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Ernst Handel</td>
-                  <td>Roland Mendel</td>
-                  <td>Austria</td>
-                </tr>
-                <tr>
-                  <td>Island Trading</td>
-                  <td>Helen Bennett</td>
-                  <td>UK</td>
-                </tr>
-                <tr>
-                  <td>Laughing Bacchus Winecellars</td>
-                  <td>Yoshi Tannamuri</td>
-                  <td>Canada</td>
-                </tr>
-                <tr>
-                  <td>Magazzini Alimentari Riuniti</td>
-                  <td>Giovanni Rovelli</td>
-                  <td>Italy</td>
-                </tr>
-            </table>
-
-            <img src="/Bilder/ich 4.jpg" class="modal-hover-opacity" onclick="onClick(this)">
-            
-               <iframe src="https://ide.geeksforgeeks.org/online-python3-compiler/91603b01-1c6e-49d3-af04-aa954c896fea" height="300" width="400"></iframe>
-
-
             <a class="pre">Previous</a>
             <a class="next">Next</a>
-
-
         </div>
-
-
-
-
         <div id="modal01" class="modal" onclick="this.style.display='none'">
             <span class="close">X</span>
             <div class="modal-content">
