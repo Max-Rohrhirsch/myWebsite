@@ -133,7 +133,7 @@ green { color: green }
     font-size: 18px;
 
     min-height: 100%;
-    width: 60vw;
+    width: 80vw;
 }
 
 .main h2 { font-size: 20px }
@@ -166,29 +166,20 @@ out {
     border-radius: 10px;
 }
 
-code {
-    display: block;
-    width: calc(100% - 40px);
-    background-color: #333;
-    padding: 20px;
-    margin-top: 20px;
-    border: 1px solid #777;
-}
-code::before {
-    content: "python";
-    color: var(--main-special-color);
-    background-color: #333;
-
-    top: -52px;
-    left: -21px;
-    position: relative;
-
-    
-    padding: 7px 15px;
-    border: 1px solid #777;
-    border-bottom: 1px solid #333;
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
 
+.half {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.half pre {
+    height: calc(100% - 50px);
+}
 
 /* ------------ Table ----------- */
 
