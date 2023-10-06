@@ -102,57 +102,96 @@
             <h1>Java</h1>
             <hr>
 
-            <h2>Threads</h2>
-            <pre>
-                <code class="language-java">
-public class Main extends Thread {
-    public static int amount = 0;
-    
+            <h2>Swing</h2>
+            <a href="https://www.javatpoint.com/java-joptionpane">Tutorial</a>
+            <div class="wrapper">
+<pre>
+    <code class="language-java">// Basic class + import
+
+import java.io.*;
+import java.awt.*;
+import javax.swing.*;
+
+public class Swing{
     public static void main(String[] args) {
-        Main thread = new Main();
-        thread.start();
-        // Wait for the thread to finish
-        while(thread.isAlive()) {
-            System.out.println("Waiting...");
-        }
-        // Update amount and print its value
-        System.out.println("Main: " + amount);
-        amount++;
-        System.out.println("Main: " + amount);
-    }
-    public void run() {
-        amount++;
+    JFrame frame = new JFrame();
+        Label l1 = new Label("Select known Languages");
+        
+        L1.setBounds(150, 200, 220, 50);
+        frame.add( l1 );
+        
+        frame.setSize( 500, 600 );
+        frame.setLayout( null );
+        frame.setVisible( true );
+        f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );    
     }
 }
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// Button
 
-For (int element : array) {…} 
-                </code>
-            </pre>
+JButton b = new JButton( "Button" );
+b.setBounds( 100, 230, 180, 50 );
+b.addActionListener( new ActionListener(){
+    public void actionPerformed( ActionEvente ){
+        l1.setText( "Welcome to Java." );
+    }
+});
 
-            <h2>File handeling</h2>
-            <pre>
-                <code class="language-java">
-import java.io.File;  // Import the File class
-
-public class GetFileInfo { 
-    public static void main(String[] args) {
-        File myObj = new File("filename.txt");
-        if (myObj.exists()) {
-            System.out.println("File name: " + myObj.getName());
-            System.out.println("Absolute path: " + myObj.getAbsolutePath());
-            System.out.println("Writeable: " + myObj.canWrite());
-            System.out.println("Readable " + myObj.canRead());
-            System.out.println("File size in bytes " + myObj.length());
-        } else {
-            System.out.println("The file does not exist.");
-        }
+b2.addActionListener(this);  
+public void actionPerformed(ActionEvent e) {  
+    String s1 = tf1.getText();  
+    if( e.getSource() == b1 ) { 
+        // ...
     }
 }
-                </code>
-            </pre>
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// Label
+        
+Label l1 = new Label( "Select known Languages" );
+l1.setEditable( false );  // opt
+    </code>
+</pre>
 
+<pre>
+    <code class="language-java">// Checkbox
 
+Checkbox c2 = new Checkbox( "My Checkbox" );
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// Password
 
+final JPasswordField value = new JPasswordField();   
+new String( value.getPassword() );   
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// Radiobutton
+        
+rb1 = new JRadioButton( "Male" );    
+ButtonGroup bg = new ButtonGroup();    
+bg.add( rb1 ); bg.add( rb2 );    
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// Combobox/ Dropdown
+
+String country[] = {"India","Aus","U.S.A","England","Newzealand"};        
+JComboBox cb = new JComboBox( country );    
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// 
+        
+
+    </code>
+</pre>
+
+            </div>
 
             <a class="pre">Previous</a>
             <a class="next">Next</a>
