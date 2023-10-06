@@ -136,7 +136,10 @@ green { color: green }
     width: 80vw;
 }
 
-.main h2 { font-size: 20px }
+.main h2 { 
+    font-size: 20px;
+    color: #ee622a;
+}
 
 .main a {
     color: rgb(44, 172, 65);
@@ -168,8 +171,13 @@ out {
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    font-size: 18px;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+}
+
+.wrapper pre {
+    height: calc(100% - 50px);
 }
 
 .half {
