@@ -3,8 +3,8 @@
 
 
 $(function(){
-    $("#includHeader").load("header.html"); 
+    $("#includHeader").load("/header.html"); 
 });
 $(function(){
-    $("#includFooter").load("footer.html"); 
+    $("#includFooter").load("/footer.html"); 
 });
