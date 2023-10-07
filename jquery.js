@@ -3,8 +3,8 @@
 
 
 $(function(){
-    $("#includHeader").load("https://max-rohrhirsch.github.io/header.html"); 
+    $("#includHeader").load("header.html"); 
 });
 $(function(){
-    $("#includFooter").load("https://max-rohrhirsch.github.io/footer.html"); 
+    $("#includFooter").load("footer.html"); 
 });
