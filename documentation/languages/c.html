@@ -58,22 +58,22 @@ max.age = 19;
 // foo.h
 #ifndef FOO_H_   
 #define FOO_H_
-int foo(int x);  /* An example function declaration */
+int foo(int x);  
 #endif 
 
 // foo.c
 #include "foo.h" 
-int foo(int x)    /* Function definition */
+int foo(int x)   
 {
     return x + 5;
 }
 
 // main.c
 #include <stdio.h>
-#include "foo.h"  /* Include the header here, to obtain the function declaration */
+#include "foo.h"  
 int main(void)
 {
-    int y = foo(3);  /* Use the function here */
+    int y = foo(3); 
     printf("%d\n", y);
     return 0;
 }

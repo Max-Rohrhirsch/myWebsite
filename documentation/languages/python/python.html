@@ -4,6 +4,7 @@
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
             <a href="/documentation/languages/python/python.html">Basics</a>
+            <a href="/documentation/languages/python/tkinter.html">Tkinter (GUI)</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
@@ -11,7 +12,7 @@
             <h1>Python</h1>
             <hr><br>
 
-            <div class="wrapper">
+            <div class="half">
                 <pre>
                     <code class="language-python"># Array, Tuples, ...
 
@@ -22,7 +23,8 @@ myArray.extend([3, "element"])
 myArray.insert(2, "...") # replaces second element
 myArray.append("hi")
 myArray.remove("hi")
-myArray.index("hallo") # returns the Index of the element
+myArray.index("hallo") 
+# returns the Index of the element
 
 
 dictionary = {
@@ -34,7 +36,8 @@ dictionary["age"] # Outputs -> 19
 
 myTuple = ("apple", 83, 1)
 myTuple[1] //Outputs -> 83
-# Like a Array, but it cant be changed after being declared.
+# Like a Array, but it cant 
+# be changed after being declared.
 
 
 mySet = {1, "two", 3, 4.1}
@@ -112,7 +115,7 @@ except:
             <hr><br>
             <h2>Numpy</h2>
             <out>pip install numba</out>
-            <div class="wrapper">
+            <div class="half">
                 <pre>
                     <code class="language-python"># Numba/ njit
 
@@ -124,7 +127,7 @@ import numpy as np
 x = np.arange(100).reshape(10, 10)
 
 @njit
-def go_fast(a): # Function is compiled to machine code when called the first time
+def go_fast(a): 
     trace = 0.0
     for i in range(a.shape[0]):   
         trace += np.tanh(a[i, i])
@@ -225,16 +228,94 @@ plt.ylabel("Calorie Burnage", fontdict = font)
                 <pre>
                     <code class="language-python"># Function and Diagramms
 
-                        plt.scatter(x, y) # show points 
-                        plt.subplot(1, 2, 2) 
+plt.scatter(x, y) # show points 
+plt.subplot(1, 2, 2) 
+
+plt.scatter(x, y, c=colors, cmap='viridis') 
+plt.colorbar() 
+plt.legend(title = "Four Fruits:") 
+
+plt.bar(x,y)     
+plt.hist(x) 
+plt.pie(y) 
+                    </code>
+                </pre>
+            </div>
+            <h2>E-Mail</h2>
+            <div class="half">
+                <pre>
+                    <code class="language-python"># send
+
+import smtplib
+
+server = smtplib.SMTP("smtp.gmail.com", 587)
+server.starttls()
+server.login("max007ist666@gmail.com", "passkey...")
+server.sendmail("max007ist676@gmail.com", "max.5666@gmail.com", "Hallo")
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># receve
+
+
+                        import imaplib
+                        import email
+                        from email.header import decode_header
                         
-                        plt.scatter(x, y, c=colors, cmap='viridis') 
-                        plt.colorbar() 
-                        plt.legend(title = "Four Fruits:") 
+                        # Your Gmail credentials
+                        email_user = "max007ist66776@gmail.com"
+                        email_pass = ""
                         
-                        plt.bar(x,y)     
-                        plt.hist(x) 
-                        plt.pie(y) 
+                        mail = imaplib.IMAP4_SSL("imap.gmail.com")
+                        mail.login(email_user, email_pass)
+                        mailbox = "inbox"
+                        mail.select(mailbox)
+                        status, email_ids = mail.search(None, "ALL")
+                        email_ids = email_ids[0].split()
+                        
+                        # Loop through each email
+                        for email_id in email_ids:
+                            # Fetch the email by its ID
+                            status, msg_data = mail.fetch(email_id, "(RFC822)")
+                            if status == "OK":
+                                raw_email = msg_data[0][1]
+                                msg = email.message_from_bytes(raw_email)
+                        
+                                # Get email details
+                                subject, encoding = decode_header(msg["Subject"])[0]
+                                if isinstance(subject, bytes):
+                                    subject = subject.decode(encoding if encoding else "utf-8")
+                                from_name, _ = decode_header(msg.get("From"))[0]
+                                if isinstance(from_name, bytes):
+                                    from_name = from_name.decode(encoding if encoding else "utf-8")
+                        
+                                print("Subject:", subject)
+                                print("From:", from_name)
+                        
+                                # If the email is multipart (contains attachments)
+                                if msg.is_multipart():
+                                    for part in msg.walk():
+                                        content_type = part.get_content_type()
+                                        content_disposition = str(part.get("Content-Disposition"))
+                        
+                                        if "attachment" in content_disposition:
+                                            filename = part.get_filename()
+                                            if filename:
+                                                print("Attachment:", filename)
+                        
+                                        if "text" in content_type:
+                                            text = part.get_payload(decode=True)
+                                            print("Text:", text.decode("utf-8", "ignore"))
+                        
+                                # If the email is not multipart
+                                else:
+                                    content_type = msg.get_content_type()
+                                    payload = msg.get_payload(decode=True)
+                                    if "text" in content_type:
+                                        print("Text:", payload.decode("utf-8", "ignore"))
+                        
+                        # Logout and close the connection
+                        mail.logout()                        
                     </code>
                 </pre>
             </div>
