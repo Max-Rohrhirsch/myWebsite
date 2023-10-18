@@ -251,71 +251,72 @@ import smtplib
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
 server.login("max007ist666@gmail.com", "passkey...")
-server.sendmail("max007ist676@gmail.com", "max.5666@gmail.com", "Hallo")
+server.sendmail("max007ist676@gmail.com", 
+    "max.5666@gmail.com", "Hallo")
                     </code>
                 </pre>
                 <pre>
                     <code class="language-python"># receve
 
 
-                        import imaplib
-                        import email
-                        from email.header import decode_header
-                        
-                        # Your Gmail credentials
-                        email_user = "max007ist66776@gmail.com"
-                        email_pass = ""
-                        
-                        mail = imaplib.IMAP4_SSL("imap.gmail.com")
-                        mail.login(email_user, email_pass)
-                        mailbox = "inbox"
-                        mail.select(mailbox)
-                        status, email_ids = mail.search(None, "ALL")
-                        email_ids = email_ids[0].split()
-                        
-                        # Loop through each email
-                        for email_id in email_ids:
-                            # Fetch the email by its ID
-                            status, msg_data = mail.fetch(email_id, "(RFC822)")
-                            if status == "OK":
-                                raw_email = msg_data[0][1]
-                                msg = email.message_from_bytes(raw_email)
-                        
-                                # Get email details
-                                subject, encoding = decode_header(msg["Subject"])[0]
-                                if isinstance(subject, bytes):
-                                    subject = subject.decode(encoding if encoding else "utf-8")
-                                from_name, _ = decode_header(msg.get("From"))[0]
-                                if isinstance(from_name, bytes):
-                                    from_name = from_name.decode(encoding if encoding else "utf-8")
-                        
-                                print("Subject:", subject)
-                                print("From:", from_name)
-                        
-                                # If the email is multipart (contains attachments)
-                                if msg.is_multipart():
-                                    for part in msg.walk():
-                                        content_type = part.get_content_type()
-                                        content_disposition = str(part.get("Content-Disposition"))
-                        
-                                        if "attachment" in content_disposition:
-                                            filename = part.get_filename()
-                                            if filename:
-                                                print("Attachment:", filename)
-                        
-                                        if "text" in content_type:
-                                            text = part.get_payload(decode=True)
-                                            print("Text:", text.decode("utf-8", "ignore"))
-                        
-                                # If the email is not multipart
-                                else:
-                                    content_type = msg.get_content_type()
-                                    payload = msg.get_payload(decode=True)
-                                    if "text" in content_type:
-                                        print("Text:", payload.decode("utf-8", "ignore"))
-                        
-                        # Logout and close the connection
-                        mail.logout()                        
+import imaplib
+import email
+from email.header import decode_header
+
+# Your Gmail credentials
+email_user = "max007ist66776@gmail.com"
+email_pass = ""
+
+mail = imaplib.IMAP4_SSL("imap.gmail.com")
+mail.login(email_user, email_pass)
+mailbox = "inbox"
+mail.select(mailbox)
+status, email_ids = mail.search(None, "ALL")
+email_ids = email_ids[0].split()
+
+# Loop through each email
+for email_id in email_ids:
+    # Fetch the email by its ID
+    status, msg_data = mail.fetch(email_id, "(RFC822)")
+    if status == "OK":
+        raw_email = msg_data[0][1]
+        msg = email.message_from_bytes(raw_email)
+
+        # Get email details
+        subject, encoding = decode_header(msg["Subject"])[0]
+        if isinstance(subject, bytes):
+            subject = subject.decode(encoding if encoding else "utf-8")
+        from_name, _ = decode_header(msg.get("From"))[0]
+        if isinstance(from_name, bytes):
+            from_name = from_name.decode(encoding if encoding else "utf-8")
+
+        print("Subject:", subject)
+        print("From:", from_name)
+
+        # If the email is multipart (contains attachments)
+        if msg.is_multipart():
+            for part in msg.walk():
+                content_type = part.get_content_type()
+                content_disposition = str(part.get("Content-Disposition"))
+
+                if "attachment" in content_disposition:
+                    filename = part.get_filename()
+                    if filename:
+                        print("Attachment:", filename)
+
+                if "text" in content_type:
+                    text = part.get_payload(decode=True)
+                    print("Text:", text.decode("utf-8", "ignore"))
+
+        # If the email is not multipart
+        else:
+            content_type = msg.get_content_type()
+            payload = msg.get_payload(decode=True)
+            if "text" in content_type:
+                print("Text:", payload.decode("utf-8", "ignore"))
+
+# Logout and close the connection
+mail.logout()                        
                     </code>
                 </pre>
             </div>
