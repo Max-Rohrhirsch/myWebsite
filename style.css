@@ -51,29 +51,31 @@ body {
 /* ---- DROPDOWN ---- */
 
 .dropbtn {
-    background-color: none;
     border: none;
     cursor: pointer;
+    margin: 0;
+    padding: 8px 16px;
 }
   
 .dropdown {
     position: relative;
     display: inline-block;
     margin: 0;
+    padding: 0;
 }
   
 .dropdown-content {
     display: none;
     position: absolute;
     padding: 0;
-    right: 0;
+    margin: 0;
 
     background-color: #222;
 }
   
 .dropdown-content a {
-    padding: 12px 8px;
-    margin: none;
+    padding: 0px 8px;
+    margin: 0;
     text-decoration: none;
     display: block;
 }

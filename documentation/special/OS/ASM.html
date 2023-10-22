@@ -9,7 +9,7 @@
     <div class="main">
     <h2>Registers</h2>
             <pre>
-                <code class="language-asm">
+                <code class="language-assembly">
 General registers
 EAX EBX ECX EDX
 
@@ -22,7 +22,7 @@ ESI EDI EBP EIP ESP
             </pre>
             <img src="https://flint.cs.yale.edu/cs421/papers/x86-asm/x86-registers.png">
             <pre>
-                <code class="language-asm">
+                <code class="language-assembly">
 .data		
 var:		
     .byte 64	/* Declare a byte, referred to as location var, containing the value 64. */
@@ -34,7 +34,7 @@ y:
                 </code>
             </pre>
             <pre>
-                <code class="language-asm">
+                <code class="language-assembly">
 s:		
     .long 1, 2, 3	/* Declare three 4-byte values, initialized to 1, 2, and 3.
                        The value at location s + 8 will be 3. */
@@ -155,14 +155,14 @@ str:
             </table>
             <h2>Example</h2>
             <pre>
-                <code class="language-asm">
+                <code class="language-assembly">
 cmp ax, bx
 je myLabel
                 </code>
             </pre>
             <h2>Loops</h2>
             <pre>
-                <code class="language-asm">
+                <code class="language-assembly">
 xor cx,cx   ; cx-register is the counter, set to 0
 loop1:  nop         ; Whatever you wanna do goes here, should not change cx
         inc cx      ; Increment
@@ -171,7 +171,7 @@ loop1:  nop         ; Whatever you wanna do goes here, should not change cx
                 </code>
             </pre>
             <pre>
-                <code class="language-asm">
+                <code class="language-assembly">
 mov cx,4    ; 4 iterations
 loop1:  nop         ; Whatever you wanna do goes here, should not change cx
         loop loop1  ; loop instruction decrements cx and jumps to label if not 0
@@ -179,7 +179,7 @@ loop1:  nop         ; Whatever you wanna do goes here, should not change cx
             </pre>
             <h2>Bit Syze</h2>
             <pre>
-                <code class="language-asm">
+                <code class="language-assembly">
 db      0x55                ; just the byte 0x55
 db      0x55,0x56,0x57      ; three bytes in succession
 db      'a',0x55            ; character constants are OK

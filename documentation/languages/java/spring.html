@@ -6,7 +6,7 @@
         <div class="sidenav">
             <a href="/documentation/languages/java/java.html">Basics</a>
             <a href="/documentation/languages/java/swing.html">Swing</a>
-            <a href="/documentation/languages/java/spring.html">Spring</a>
+            <a href="/documentation/languages/java/spring.html">Spring Boot</a>
         </div>
 
         <!-- ------ MAIN CONTENT ----- -->
@@ -29,13 +29,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    @GetMapping("/api/test/{resourceId}")
-    public String getString(@PathVariable String resourceID) {
+
+    @GetMapping("/")
+    public String getString() {
+        return "index";
+    }
+
+    @GetMapping("/test/{resourceID}")
+    public String getString(@PathVariable("resourceID") String resourceID) {
         return "Here is the String: " + resourceID;
     }
-    @PostMapping("/api/tets")
-    public String getString(D) {
-        return "POST";
+
+    @GetMapping("/test2/{resourceID}")
+    public String getString2(@PathParam("resourceID") String resourceID) {
+        return "Here is the String: " + resourceID;
     }
 }
 
@@ -100,7 +107,7 @@ spring.jpa.hibernate.ddl.auto=update
 spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
-// -------------  Java -----------------
+// -------------  Student -----------------
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -114,6 +121,22 @@ public class Student {
 
     @column(name = "info")
     private String infos;
+}
+
+
+// -------------- Repository ---------------
+@Repository
+public interface StudentRepository extends JpaRepository&lt;Student, Integer> {}
+
+// -------------- Service ---------------
+@Service
+public class StudentService {
+    @Autowired
+    private StudentRepository studentRepository;
+
+    public Student saveDetails(Student student) {
+        return studentRepository.save(student);
+    }
 }
     </code>
 </pre>
@@ -142,11 +165,27 @@ try {
 }
     </code>
 </pre>
-            
-        </div>
+</div>
+<pre><code class="language-java">
+@Controller
+public class myController {
+    @RequestMapping("/")
+    public String welcome() {
+        return "index";
+    }
+}
+// Create index file in templates
+// dependency "web" "DevTools" "thymleaf"
+
+
+</code>
+    <code class="language-html">// Import Bootstrap
+        &lt;link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        &lt;script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">&lt;/script>
+        &lt;script src=https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">&lt;/script>
+        &lt;script src=https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">&lt;/script>
         
-
-
-
-
+    </code>
+</pre>
+</div>
 <div id="includeFooter"></div>
