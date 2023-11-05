@@ -13,17 +13,17 @@
             <h1>Hacking</h1>
             <hr><br>
             <h2>RSA</h2>
-            <p>p, q = Primzahlen 
-                e = ggT(k, Phi)            //Teilerfremd oder auch eine Primzahl und zwischen 1 und phi(N), häufig 65537 
-                
-                N = p * q 
-                Phi = (p - 1)(q-1) 
-                E * d = 1mod phi(N) 
-                
-                M = nachricht klartext 
-                C = verschlüsselt 
-                
-                Öffentliche (e, N) -> M^e mod N = c 
+            <p>p, q = Primzahlen <br>
+                e = ggT(k, Phi)            //Teilerfremd oder auch eine Primzahl und zwischen 1 und phi(N), häufig 65537 <br>
+                <br>
+                N = p * q <br>
+                Phi = (p - 1)(q-1) <br>
+                E * d = 1mod phi(N) <br>
+                <br>
+                M = nachricht klartext <br>
+                C = verschlüsselt <br>
+                <br>
+                Öffentliche (e, N) -> M^e mod N = c <br>
                 Private (d, N) -> c^d mod N = m </p>
 <pre>
     <code class="language-python">
