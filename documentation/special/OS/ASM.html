@@ -9,6 +9,7 @@
     </div>
 
     <div class="main">
+        <out>nasm -f elf64 main.asm && ld -s -o main main.o && ./main  </out>
     <h2>Registers</h2>
             <pre>
                 <code class="language-assembly">
@@ -201,6 +202,26 @@ dq      1.234567e20         ; double-precision float
 dt      1.234567e20         ; extended-precision float
                 </code>
             </pre>
+            <div class="half">
+                <pre>
+                    <code class="language-assembly">; end
+struc   mystruct
+    a:      resw    1
+    b:      resd    1
+    c:      resb    1
+    d:      resd    1
+    e:      resb    6
+endstruc
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-assembly">; struct
+mov     ebx,0  
+mov     eax,1 
+int     0x80   
+                    </code>
+                </pre>
+            </div>
         </div>
 
 <div id="includeFooter"></div>

@@ -92,5 +92,58 @@ if __name__ == '__main__':
     </code>
 </pre>
 
+<hr>
+<table>
+    <tr>
+        <th>Example</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>nmap 192.168.1.1-254</td>
+        <td>Scan a range</td>
+    </tr>
+    <tr>
+        <td>nmap 192.168.1.0/24</td>
+        <td>Scan using CIDR notation</td>
+    </tr>
+    <tr>
+        <td>nmap -iL targets.txt</td>
+        <td>Scan targets from a file</td>
+    </tr>
+    <tr>
+        <td>nmap -exclude 192.168.1.1</td>
+        <td>Exclude listed hosts</td>
+    </tr>
+    <tr>
+        <td>nmap 192.168.1.1 -sS</td>
+        <td>TCP SYN port scan (Default)</td>
+    </tr>
+    <tr>
+        <td>nmap 192.168.1.1 -sU</td>
+        <td>UDP port scan</td>
+    </tr>
+    <tr>
+        <td>nmap 192.168.1.1 -F</td>
+        <td>Fast port scan (100 ports)</td>
+    </tr>
+    <tr>
+        <td>nmap -sP 192.168.1.1/20</td>
+        <td>Ping scann</td>
+    </tr>
+    <tr>
+        <td>nmap -sV 168.121.34.56</td>
+        <td>Service Version Detection</td>
+    </tr>
+    <tr>
+        <td>nmap 192.168.1.1 -O</td>
+        <td>OS detection</td>
+    </tr>
+    <tr>
+        <td>StrgT</td>
+        <td>NewTab</td>
+    </tr>
+</table>
+<hr>
+
             
 <div id="includeFooter"></div>

@@ -97,6 +97,10 @@ for match in matches:
                     <td>Range</td>
                 </tr>
                 <tr>
+                    <td>[a-g]</td>
+                    <td>Character between a & g</td>
+                </tr>
+                <tr>
                     <td>{3}</td>
                     <td>Exact</td>
                 </tr>
@@ -111,6 +115,29 @@ for match in matches:
                 <tr>
                     <td>?</td>
                     <td>0 or 1</td>
+                </tr>
+            </table>
+            <p>\. \* \\	escaped special characters</p>
+            <h2>Flags</h2>
+            <table>
+                <tr>
+                    <th>Symbols</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>/i</td>
+                    <td>case-insensitive</td>
+                    <td>/aBc/i  would match AbC.</td>
+                </tr>
+                <tr>
+                    <td>/m</td>
+                    <td>Multiline. ^ and $ mach start of line lot of the string</td>
+                    <td>/^[\s\S]+$/m</td>
+                </tr>
+                <tr>
+                    <td>[]</td>
+                    <td>Matches character</td>
                 </tr>
             </table>
             <h2>Examples</h2>

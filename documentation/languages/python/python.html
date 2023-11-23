@@ -241,6 +241,7 @@ plt.pie(y)
                     </code>
                 </pre>
             </div>
+            <hr>
             <h2>E-Mail</h2>
             <div class="half">
                 <pre>
@@ -317,6 +318,138 @@ for email_id in email_ids:
 
 # Logout and close the connection
 mail.logout()                        
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># text to speech
+
+from gtts import gTTS
+from playsound import playsound
+
+languedge = 'de'
+tts = gTTS(text="Wann ist die schonzeit der fische",
+            lang=languedge,
+            slow=False)
+tts.save("audio/tts.mp3")
+playsound("audio/tts.mp3")
+input()
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># speech to text
+import os
+import glob
+from gtts import gTTS
+from playsound import playsound
+import speech_recognition as sr
+
+def record(dur):
+with sr.Microphone() as source:
+    print("speak Anything: ")
+    audio = r.record(source, duration=dur)
+    print("finished")
+    text = r.recognize_google(audio, language="de-DE")
+    return text
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># Dijkstra.py
+nodes = ('A', 'B', 'C', 'D', 'E', 'F', 'G')
+
+distances = {
+    'B': {'A': 5, 'D': 1, 'G': 2},
+    'A': {'B': 5, 'D': 3, 'E': 12, 'F' :5},
+    'D': {'B': 1, 'G': 1, 'E': 1, 'A': 3},
+    'G': {'B': 2, 'D': 1, 'C': 2},
+    'C': {'G': 2, 'E': 1, 'F': 16},
+    'E': {'A': 12, 'D': 1, 'C': 1, 'F': 2},
+    'F': {'A': 5, 'E': 2, 'C': 16}}
+
+unvisited = {node: None for node in nodes}
+visited = {}
+current = 'B'
+currentDistance = 0
+unvisited[current] = currentDistance
+
+while True:
+    for neighbour, distance in distances[current].items():
+        if neighbour not in unvisited: continue
+        newDistance = currentDistance + distance
+        if unvisited[neighbour] is None or unvisited[neighbour] > newDistance:
+            unvisited[neighbour] = newDistance
+    visited[current] = currentDistance
+    del unvisited[current]
+    if not unvisited: break
+    candidates = [node for node in unvisited.items() if node[1]]
+    current, currentDistance = sorted(candidates, key = lambda x: x[1])[0]
+
+print(visited)
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># SIN
+import math as m
+
+def mySin(theta):
+    theta = m.fmod(theta + m.pi, 2*m.pi) - m.pi
+    res = 0
+    termsign = 1
+    power = 1
+
+    for i in range(10):
+        res += (m.pow(theta, power) / m.factorial(power)) * termsign
+        termsign *= -1
+        power += 2
+    return res
+
+if x := 3:
+    pass
+
+    a = "name: %s"
+    b = "max"
+    print(a % b) # -> name: max
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># Complex
+array = [i for i in range(100)]
+
+array[10:20:-1]
+
+del array  # free/delete
+
+def generator():
+    for i in range(6):
+        yield i*i
+
+num: int = 5
+def myFunc(a: num) -> str:
+    pass
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># Decorators
+def mydecorator(function):
+    def wrapper():
+        function()
+        return wrapper
+
+@mydecorator
+def hello_world():
+    print("hello World")
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-python"># Args and Kwargs
+def myfunction(*args, **kwargs):
+    args[0]
+    kwargs["param1"]
+
+
+# python3 main.py test
+import sys
+print(sys.argv[0])  # main.py
+print(sys.argv[1])  # test
                     </code>
                 </pre>
             </div>
