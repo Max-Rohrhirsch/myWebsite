@@ -9,53 +9,69 @@
 
 <!-- ------ MAIN CONTENT ----- -->
 <div class="main">
+    <h2>Installation</h2>
+    <div class="wrapper">
+        <pre>
+            <code class="language-bash">
+/** Node.js must be Installed */
+npm install -g @angular/cli
+            </code>
+        </pre>
+    </div>
+
+    <br>
+    <h2>Init</h2>
+    <div class="wrapper">
+        <pre>
+            <code class="language-bash">
+ng new appName  /** Init project */
+ng generate component componentName
+            </code>
+        </pre>
+    </div>
+
+    <br>
+    <h2>Run</h2>
+    <div class="wrapper">
+        <pre>
+            <code class="language-bash">
+ng serve --open
+
+// or
+ng add @angular/pwa
+ng build
+ng serve --open
+// oben ist das install icon
+            </code>
+        </pre>
+    </div>
+    <p>Project must be in C directory</p>
+    
+<h1>Code</h1>
 <div class="wrapper">
 <pre>
-    <code class="language-typescript">// Basics
-@Component({
-    selector: 'courses',
-    template: '
-        &lt;h2>hhh {{ var }}&lt;/h2>
-        &lt;ul>
-            &lt;li *ngFor="let course of cources">
-                {{ course }}
-            &lt;/li>
-        &lt;/ul>
-    '
-})
-export class dddd {
-var = "....";
-}
-
-
-// ---------------
-
-&lt;app-root>&lt;/app-root>
+    <code class="language-typescript">
+&lt;button (click)="func()"> &lt;/button> // on click execute
     </code>
 </pre>
 <pre>
-    <code class="language-typescript">// 
-
+    <code class="language-typescript">
+&lt;p *ngIf="count &lt;= 1> Text &lt;/p>     // only shows if condition is true
     </code>
 </pre>
 <pre>
-    <code class="language-typescript">// 
-
+    <code class="language-typescript">
+&lt;p> {{ varName }} &lt;/p> // prints variable
     </code>
 </pre>
 <pre>
-    <code class="language-typescript">// 
+    <code class="language-typescript">
+Component.ts:
+    imports: [TestoloComponent, CommonModule], if you add a componnent
 
-    </code>
-</pre>
-<pre>
-    <code class="language-typescript">// 
-
-    </code>
-</pre>
-<pre>
-    <code class="language-typescript">// 
-
+    export class Testolo2Component implements OnInit {
+        ngOnInit() {}
+    }
     </code>
 </pre>
 </div>
