@@ -1,0 +1,147 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+        <!-- ------ SIDE NAVIGATION BAR ----- -->
+        <div class="sidenav">
+            <a href="/documentation/special/powershell.html">Basics</a>
+        </div>
+        <p>man, ls, cat, cd, md/mkdir, curl, rm/rmdir, write/echo, sleep, pwd, cls</p>
+        <div class="wrapper">
+            <pre>
+                <code language="powerhell">
+Get-process
+Get-service
+get-help md
+ls -Path HKLM:\HARDWARE
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># sql like
+Get-process | where handels -gt 900 | sort handels
+Get-service | select -property name, status
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># output
+Tree | out-file j:\main.html
+| ConvertTo-html | out-file j:\main.html
+                </code>
+            </pre>
+        </div>
+
+
+        <h2>Scripting</h2>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>eq (equals)</td>
+                <td>A -eq B will give false</td>
+            </tr>
+            <tr>
+                <td>ne (not equals)</td>
+                <td>A -ne B will give true</td>
+            </tr>
+            <tr>
+                <td>gt (greater than)</td>
+                <td>B -gt A will give true</td>
+            </tr>
+            <tr>
+                <td>ge (greater than or equals to)</td>
+                <td>B -ge A will give true</td>
+            </tr>
+            <tr>
+                <td>lt (less than)</td>
+                <td>B -lt A will give false</td>
+            </tr>
+            <tr>
+                <td>le (less than or equals to)</td>
+                <td>B -le A will give false</td>
+            </tr>
+        </table>
+        <p>AND, OR, NOT work too</p>
+
+
+        <div class="wrapper">
+            <pre>
+                <code language="powerhell"># vars
+$location = Get-Location
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># if
+if($x -le 20){
+    write-host("This is if statement")
+}else {
+    write-host("This is else statement")
+}
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># for loop
+for($i = 0; $i -lt $array.length; $i++){ 
+    $array[$i] 
+}
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># while loop
+while($counter -lt $array.length) {
+   $array[$counter]
+}
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># for each loop
+$array = @("item1", "item2", "item3")
+$A = 1, 2, 3, 4
+
+
+foreach ($element in $array) { $element }
+
+$array | foreach { $_ }
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># regex
+"book" -match "oo"
+"and" -match "[^brt]nd"
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># function
+function Verb-Noun {
+    param (
+        # static parameters
+    )
+    dynamicparam {
+        # dynamic parameters
+    }
+    begin {
+        # start of the pipeline
+    }
+    process {
+        # ran for each item in the pipeline
+    }
+    end {
+        # end of the pipeline
+    }
+}
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># regex
+"
+                </code>
+            </pre>
+            <pre>
+                <code language="powerhell"># regex
+
+                </code>
+            </pre>
+        </div>
+        
+
+        <div id="includeFooter"></div>

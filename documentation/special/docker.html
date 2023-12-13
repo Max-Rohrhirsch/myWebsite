@@ -1,0 +1,65 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+        <!-- ------ SIDE NAVIGATION BAR ----- -->
+        <div class="sidenav">
+            <a href="/documentation/special/docker.html">Basics</a>
+        </div>
+
+
+        <h2>Installation</h2>
+        <a href="https://docs.docker.com/engine/install/">Docker Desktop</a>
+<p>docker extension in VS-code</p>
+
+        <h2>Docker File</h2>
+        <div class="half">
+            <pre>
+                <code language="docker">
+FROM node:12
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+ENV PORT=8080
+
+EXPOSE 8080
+
+CMD [ "npm", "start" ]
+                </code>
+            </pre>
+        </div>        
+        
+
+        <h2>Commands</h2>
+        <div class="wrapper">
+            <pre>
+                <code language="docker">
+// .dockerignore
+    node_modules
+    
+// const port = process.env.PORT || 8080
+
+docker ps    // list/log
+                </code>
+            </pre>
+        </div>
+
+        <h2>RUN</h2>
+        <div class="half">
+            <pre>
+                <code language="docker">
+docker build -t &lt;tagname>
+
+docker run -p 5000:8080 &lt;tagname>
+                </code>
+            </pre>
+        </div>    
+
+
+
+        <div id="includeFooter"></div>
