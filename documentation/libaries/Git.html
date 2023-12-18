@@ -30,7 +30,7 @@ git init
 git add .
 git commit -m "Message"
 git remote add origin https://gitlab....
-git push -uf origin master
+git push origin master
     </code>
 </pre>
 <br>
@@ -39,10 +39,17 @@ git push -uf origin master
 <pre>
     <code class="language-git">
 git log 
+git log --graph --decorate 
+
 git checkout 3f34s5d5 
-git branch 
+git branch // shows current branch
+git checkout -b newbranch  // create new branch
+
 git push origin new-branch 
 git pull origin master 
+
+git config --global alias.co checkout
+// C:\user\max\.git\config
     </code>
 </pre>
 <div id="includeFooter"></div>

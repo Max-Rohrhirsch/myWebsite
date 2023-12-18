@@ -9,7 +9,7 @@
         <p>man, ls, cat, cd, md/mkdir, curl, rm/rmdir, write/echo, sleep, pwd, cls</p>
         <div class="wrapper">
             <pre>
-                <code language="powerhell">
+                <code class="language-powerhell">
 Get-process
 Get-service
 get-help md
@@ -17,13 +17,13 @@ ls -Path HKLM:\HARDWARE
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># sql like
+                <code class="language-powerhell"># sql like
 Get-process | where handels -gt 900 | sort handels
 Get-service | select -property name, status
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># output
+                <code class="language-powerhell"># output
 Tree | out-file j:\main.html
 | ConvertTo-html | out-file j:\main.html
                 </code>
@@ -67,12 +67,12 @@ Tree | out-file j:\main.html
 
         <div class="wrapper">
             <pre>
-                <code language="powerhell"># vars
+                <code class="language-powerhell"># vars
 $location = Get-Location
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># if
+                <code class="language-powerhell"># if
 if($x -le 20){
     write-host("This is if statement")
 }else {
@@ -81,21 +81,21 @@ if($x -le 20){
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># for loop
+                <code class="language-powerhell"># for loop
 for($i = 0; $i -lt $array.length; $i++){ 
     $array[$i] 
 }
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># while loop
+                <code class="language-powerhell"># while loop
 while($counter -lt $array.length) {
    $array[$counter]
 }
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># for each loop
+                <code class="language-powerhell"># for each loop
 $array = @("item1", "item2", "item3")
 $A = 1, 2, 3, 4
 
@@ -106,13 +106,13 @@ $array | foreach { $_ }
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># regex
+                <code class="language-powerhell"># regex
 "book" -match "oo"
 "and" -match "[^brt]nd"
                 </code>
             </pre>
             <pre>
-                <code language="powerhell"># function
+                <code class="language-powerhell"># function
 function Verb-Noun {
     param (
         # static parameters
@@ -132,17 +132,6 @@ function Verb-Noun {
 }
                 </code>
             </pre>
-            <pre>
-                <code language="powerhell"># regex
-"
-                </code>
-            </pre>
-            <pre>
-                <code language="powerhell"># regex
-
-                </code>
-            </pre>
         </div>
-        
     </div>
         <div id="includeFooter"></div>
