@@ -9,12 +9,26 @@
 
         <h2>Installation</h2>
         <a href="https://docs.docker.com/engine/install/">Docker Desktop</a>
-<p>docker extension in VS-code</p>
+        <p>docker extension in VS-code</p>
+        <pre>
+            <code class="language-bash">
+sudo apt install -y docker.io 
+sudo systemctl enable docker –now 
+sudo usermod -aG docker $USER 
+printf '%s\n' "deb https://download.docker.com/linux/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/docker-ce.list 
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker-ce-archive-keyring.gpg 
+sudo apt install apt-transport-https ca-certificates curl software-properties-common 
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu `lsb_release -cs` test" 
+sudo apt update 
+sudo apt install docker-ce 
+            </code>
+        </pre>
 
         <h2>Docker File</h2>
         <div class="half">
             <pre>
-                <code language="docker">
+                <code class="language-docker">
 FROM node:12
 
 WORKDIR /app
@@ -29,7 +43,7 @@ ENV PORT=8080
 
 EXPOSE 8080
 
-CMD [ "npm", "start" ]
+CMD [ "node", "index.js" ]
                 </code>
             </pre>
         </div>        
@@ -38,7 +52,7 @@ CMD [ "npm", "start" ]
         <h2>Commands</h2>
         <div class="wrapper">
             <pre>
-                <code language="docker">
+                <code class="language-docker">
 // .dockerignore
     node_modules
     
@@ -52,14 +66,79 @@ docker ps    // list/log
         <h2>RUN</h2>
         <div class="half">
             <pre>
-                <code language="docker">
+                <code class="language-docker">
 docker build -t &lt;tagname>
 
 docker run -p 5000:8080 &lt;tagname>
                 </code>
             </pre>
         </div>    
-    </div>
 
+    <h2>Compose file</h2>
+        <div class="wrapper">
+            <pre>
+                <code class="language-docker">
+version: '3'
+services: 
+    web:
+        build: .
+        ports:
+            - "8080:8080"
+    db:
+        image: "mysql"
+        enviroment:
+            MYSQL_ROOT_PASSWORD: 1234
+        volumes:
+            - db-data:/foo
 
-        <div id="includeFooter"></div>
+volumes:
+    db-data:
+                </code>
+            </pre>
+        </div>
+        <out>docker-compose up</out>
+        <out>docker-compose down</out>
+    
+    <hr>
+    <h2>Install Kubernetes</h2>
+    <div class="wrapper">
+        <pre>
+            <code class="language-bash">
+sudo apt-get update
+sudo apt-get install docker.io
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+chmod +x minikube
+sudo mv minikube /usr/local/bin/
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+minikube start
+            </code>
+            <code class="language-batch">
+curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
+kubectl version --client
+                            </code>
+        </pre>
+        </div>
+        <h2>Run kubernetes</h2>
+        <div class="wrapper">
+            <pre>
+                <code language="docker">
+kubectl apply -f deployment.yaml
+kubectl expose deployment example-deployment --type=LoadBalancer --port=8080
+
+kubectl get deployments
+kubectl get pods
+
+minikube service example-deployment
+
+kubectl scale deployment example-deployment --replicas=4
+
+                </code>
+            </pre>
+            </div>
+</div>
+<div id="includeFooter"></div>

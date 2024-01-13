@@ -1,0 +1,149 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+<!-- ------ SIDE NAVIGATION BAR ----- -->
+<div class="sidenav">
+    <a href="/documentation/languages/python/python.html">Basics</a>
+    <a href="/documentation/languages/python/tkinter.html">Tkinter (GUI)</a>
+    <a href="/documentation/languages/python/pyLib.html">Libarys</a>
+</div>
+
+<!-- ------ MAIN CONTENT ----- -->
+<div class="main">
+    <h1>Python</h1>
+    <hr><br>
+
+    <h2>Trading APIs</h2>
+    <out>pip install alpaca-trade-api krakenex requests vaderSentiment </out>
+    <div class="half">
+        <pre>
+            <code class="language-python"># Crypto
+import krakenex 
+
+# Initialize the Kraken API client 
+k = krakenex.API() 
+k.load_key('kraken.key')  # Load your API key and secret from 'kraken.key' file 
+# Define order parameters for buying 
+buy_order = { 
+    'pair': 'XXBTZUSD',        # Trading pair for Bitcoin to USD 
+    'type': 'buy',             # Type of order 
+    'ordertype': 'market',     # Order type ('market' or 'limit') 
+    'volume': '0.01',          # Amount of Bitcoin to buy 
+} 
+# Place the buy order 
+response = k.query_private('AddOrder', buy_order) 
+print(response) 
+            </code>
+        </pre>
+        <pre>
+            <code class="language-python"># Normal stocks
+import alpaca_trade_api as tradeapi 
+import json 
+
+# Load API keys from a JSON file 
+with open('path_to_your_json_file.json', 'r') as file: 
+    keys = json.load(file) 
+    API_KEY = keys['API_KEY'] 
+    API_SECRET = keys['API_SECRET'] 
+BASE_URL = 'https://paper-api.alpaca.markets'  # or use the live trading URL 
+# Initialize the Alpaca API 
+api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL, api_version='v2') 
+# Selling a stock 
+api.submit_order( 
+    symbol='AAPL',         # Stock symbol 
+    qty=1,                 # Number of shares 
+    side='sell',           # 'sell' for selling 
+    type='market',         # Order type 
+    time_in_force='gtc'    # Time in force 
+) 
+            </code>
+        </pre>
+    </div>
+        <p>
+<b>type:</b> This parameter defines the type of order you want to place. Common types include: <br>
+<ul>
+    <li>market: Executes the order at the current market price. </li>
+    <li>limit: Sets a specific price at which the order should execute. </li>
+    <li>stop: Triggers a market order when a specified price is reached. </li>
+    <li>stop_limit: Triggers a limit order when a specified price is reached. </li>
+</ul>
+<b>time_in_force:</b> This setting determines how long an order remains active before it is executed or expires. Common values are: 
+<ul>
+    <li>day: The order will expire at the end of the trading day if not filled. </li>
+    <li>gtc (Good Till Canceled): The order will stay active until it is filled or manually canceled. </li>
+    <li>opg (At the Opening): The order is executed at the opening of the market. </li>
+    <li>ioc (Immediate or Cancel): Any part of the order not filled immediately is canceled. </li>
+    <li>fok (Fill or Kill): The order must be filled in its entirety immediately or it is canceled. </li>
+</ul>
+</p><br><br>
+
+
+<h2>Edit Powerpoints</h2>
+<out>pip install python-pptx</out>
+<pre>
+    <code class="language-python">
+from pptx import Presentation
+from pptx.util import Inches, Pt
+from pptx.enum.shapes import MSO_SHAPE
+
+def create_presentation():
+    # Create a presentation object
+    prs = Presentation()
+
+    # Slide 0: Title Slide
+    slide_layout = prs.slide_layouts[0]  # Choosing a title slide layout
+    slide = prs.slides.add_slide(slide_layout)
+    title = slide.shapes.title
+    subtitle = slide.placeholders[1]
+    title.text = "Hello, PowerPoint!"
+    subtitle.text = "Creating a PowerPoint presentation using Python"
+
+    # Slide 1: Bullet Points
+    slide_layout = prs.slide_layouts[1]  # Choosing a slide layout with title and content
+    slide = prs.slides.add_slide(slide_layout)
+    title = slide.shapes.title
+    content = slide.placeholders[1]
+    title.text = "Bullet Points"
+    content.text = "Here are some bullet points"
+    for point in ["First point", "Second point", "Third point"]:
+        p = content.text_frame.add_paragraph()
+        p.text = point
+        p.level = 0
+
+    # Slide 2: Adding a Picture
+    slide_layout = prs.slide_layouts[5]  # Choosing a blank slide layout
+    slide = prs.slides.add_slide(slide_layout)
+    title = slide.shapes.title
+    title.text = "Adding a Picture"
+
+    img_path = 'path_to_image.jpg'  # Specify the path to the image here
+    left = Inches(1)
+    top = Inches(2)
+    slide.shapes.add_picture(img_path, left, top, width=Inches(5.5))
+
+    # Slide 3: Adding a Shape
+    slide_layout = prs.slide_layouts[5]
+    slide = prs.slides.add_slide(slide_layout)
+    title = slide.shapes.title
+    title.text = "Adding a Shape"
+
+    left = Inches(2)
+    top = Inches(2)
+    width = height = Inches(1)
+    shape = slide.shapes.add_shape(MSO_SHAPE.OVAL, left, top, width, height)
+    fill = shape.fill
+    fill.solid()
+    fill.fore_color.rgb = RGBColor(255, 0, 0)
+
+    # Save the presentation
+    prs.save('example_presentation.pptx')
+
+if __name__ == "__main__":
+    create_presentation()
+
+    </code>
+</pre>
+
+
+</div>
+<div id="includeFooter"></div>

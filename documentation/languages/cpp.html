@@ -42,5 +42,42 @@ ptr // 0x6f...
                 </code>
             </pre>
 
+            <h2>Vectors, ...</h2>
+            <div class="wraper">
+                <pre>
+                    <code class="language-cpp">#include &lt;vector>
+
+std::vector&lt;int> v = {1, 2, 3};
+v.push_back(4); // Adds 4 to the end
+std::cout << "Vector size: " << v.size() << std::endl;
+std::cout << "Second element: " << v.at(1) << std::endl; // Accesses second element
+v.pop_back(); // Removes the last element
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-cpp">#include &lt;list>
+std::list&lt;int> l = {2, 3, 4};
+l.push_front(1); // Inserts 1 at the beginning
+l.push_back(5); // Inserts 5 at the end
+for (auto it = l.begin(); it != l.end(); ++it) {
+    std::cout << *it << ' ';
+}
+std::cout << std::endl;
+l.pop_front(); // Removes the first element
+l.pop_back(); // Removes the last element
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-cpp">#include &lt;stack>
+std::stack&lt;int> s;
+s.push(1); // Pushes 1 onto the stack
+s.push(2); // Pushes 2 onto the stack
+std::cout << "Top element: " << s.top() << std::endl; // Views the top element
+s.pop(); // Removes the top element
+                    </code>
+                </pre>
+            </div>
+
+
       
 <div id="includeFooter"></div>

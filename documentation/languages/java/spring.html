@@ -24,6 +24,20 @@
                 Install Spring tools</br>
                 Set both pathvariables into path (to /bin folder)</br>
                 Install folder from spring initializer</p><br>
+            <div class="wrapper">
+                <pre>
+                    <code class="language-bash">
+sudo apt update 
+sudo apt-get install maven 
+curl -s "https://get.sdkman.io" | bash 
+sdk install springboot 
+sudo apt-get install openjdk-21-jdk 
+
+mvn clean install 
+java -jar target/your-app-name.jar 
+                    </code>
+                </pre>
+            </div>
             <div class="half" style="overflow-y: hidden;">
 <pre>
     <code class="language-java">// Simple request handeling
