@@ -5,7 +5,13 @@
         <div class="sidenav">
             <a href="/documentation/special/unity.html">Basics</a>
         </div>
-        
+        perline Noise
+        mesh generation
+        player controll
+        dbug screen
+        jobs
+        arraylists, queues, Dictionarys
+
         
 
         <!-- ------ MAIN CONTENT ----- -->
@@ -19,32 +25,13 @@
 Debug.Log("...") // print
 
 
-// Edit components
-//Drag the Component in the variable
-public Rigidbody rb;
-rb.useGravity = false;
-
-// Force
-rb.AddForce(x, y, z);
-
-//Input key
 Input.GetKey("A")
 
-//disable components
-public ... ...; //tag the object
-void OnCollisionEnter(Collision info) {
-    if (info.collider.tag == "...") {
-        moven.enabled = false;
-    }
-}
 
 // Position
 public ...;
 Player.position.z;
 
-// Go to a Methode
-using UnityEngine.sceneManagment;
-FindObjectOfType&lt;GameManager>().EndGame()
 
 // random
 Random.Range(1, 7);
@@ -53,37 +40,261 @@ Random.Range(1, 7);
 PlayerPrefs.SetInt("name", number)
 PlayerPrefs.GetInt("name", Devault)
 
-// Better Movement
-hori = Input.GetAxisRaw("Horizontal");
-verti = Input.GetAxisRaw("Vertical");
-rb.AddForce(speed * hori, 0, 0);
                 </code>
             </pre>
 
             <h2>Perlin Noise</h2>
             <pre>
-                <code>
-for X
-    for z
-        Vector3 pos = new Vector3(x * offset, generateNoise(x, z, scalle) * Height, z * offset);
-        GameObject block = ...;
-        block.transform.SetParent(this.transform);
+                <code class="language-cshrap">
+public static float get2DPerlin(Vector2 pos, float offset, float scale)
+{
+    return Mathf.PerlinNoise((pos.x + 0.15f) * scale + offset, (pos.y + 0.15f) * scale + offset);
+}
+
+public static float get3DPerlin(Vector3 pos, float offset, float scale, float caveThreshold)
+{
+        float x = (pos.x + 0.15f) * scale + offset;
+    float y = (pos.y + 0.15f) * scale + offset;
+    float z = (pos.z + 0.15f) * scale + offset;
+
+    float xy = Mathf.PerlinNoise(x, y);
+    float xz = Mathf.PerlinNoise(x, z);
+    float yz = Mathf.PerlinNoise(y, z);
+
+    float yx = Mathf.PerlinNoise(y, x);
+    float zx = Mathf.PerlinNoise(z, x);
+    float zy = Mathf.PerlinNoise(z, y);
+
+    float xyz = xy * xz * yz * yx * zx * zy;
+
+    return xyz;
+}
                 </code>
             </pre>
 
-            <h2>Shoot</h2>
+            <h2>Player Controll</h2>
             <pre>
-                <code>
-void Shoot() {
-    RaycastHit hit;
-    if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
-        Taret target = hit.transform.GetComponent&lt;Target>();
-        if(target != null) {
-            target.TakeDamage(damage);
-        }
+                <code class="language-cshrap">
+private void Start()
+{
+    camera = GameObject.Find("Main Camera").transform;
+    world = GameObject.Find("World").GetComponent&lt;World>();
+}
+
+private void Update()
+{
+    GetPlayerInput();
+    CalculateVelocity();
+
+    transform.Rotate(Vector3.up * mouse_horizontal);
+    camera.Rotate(Vector3.right * -mouse_vertical);
+    transform.Translate(velocity * Time.fixedDeltaTime * 5, Space.World);
+}
+
+
+////////////////////////////////
+///      HELPER FUNCTIONS
+////////////////////////////////
+private void CalculateVelocity() {
+    if (verticalMomentum > GRAVITY) 
+        verticalMomentum += GRAVITY * Time.fixedDeltaTime;
+
+
+    if (isSprinting) 
+        velocity = ((transform.forward * vertical) + (transform.right * horzontal)) * Time.fixedDeltaTime * SPRINT_SPEED;
+    else 
+        velocity = ((transform.forward * vertical) + (transform.right * horzontal)) * Time.fixedDeltaTime * SPEED;
+
+
+    velocity.y = verticalMomentum * Time.fixedDeltaTime;
+    if ((velocity.z > 0 && front) || (velocity.z < 0 && back)) 
+        velocity.z = 0;
+    if ((velocity.x > 0 && right) || (velocity.x < 0 && left))
+        velocity.x = 0;
+
+    if (velocity.y < 0)
+        velocity.y = checkDownSpeed(velocity.y);
+    else if (velocity.y > 0)
+        velocity.y = checkUpSpeed(velocity.y);
+    
+    if (jumpRequest) {
+        verticalMomentum = JUMP_FORCE;
+        jumpRequest = false;
+        isGrounded = false;
+    }
+
+}
+
+private void GetPlayerInput() {
+    horzontal = Input.GetAxis("Horizontal");
+    vertical = Input.GetAxis("Vertical");
+
+    mouse_horizontal = Input.GetAxis("Mouse X") * MOUSE_SPEED;
+    mouse_vertical = Input.GetAxis("Mouse Y") * MOUSE_SPEED;
+
+    if (Input.GetButtonDown("Jump") && isGrounded) 
+        jumpRequest = true;
+
+    if (Input.GetKeyDown(KeyCode.LeftShift))
+        isSprinting = true;
+    if (Input.GetKeyUp(KeyCode.LeftShift))
+        isSprinting = false;
+
+    // if (Input.GetKeyDown(KeyCode.F3))
+    //     world.debugScreen = !world.debugScreen;
+}
+                
+                </code>
+            </pre>
+
+            <h2>Debug Screen</h2>
+            <pre>
+                <code class="language-cshrap">
+using UnityEngine.UI;
+
+void Start()
+{
+    world = GameObject.Find("World").GetComponent<World>();
+    text = GetComponent<Text>();
+}
+
+void Update()
+{
+    string debugText = "Debug Screen\n";
+    debugText += "Player Position: " + world.player.position + "\n";
+    debugText += "Seed: " + world.SEED + "\n";
+    debugText += "Frame Rate: " + frameRate + "\n";
+    text.text = debugText;
+
+    if (timer > 1f)
+    {
+        frameRate = (int)(1f / Time.unscaledDeltaTime);
+        timer = 0;
+    }
+    else
+    {
+        timer += Time.deltaTime;
     }
 }
                 </code>
             </pre>
+
+
+            <h2>Jobs</h2>
+            <pre>
+                <code class="language-cshrap">
+// Add Jobs in Unity Package manager
+if (chunksToGenerate.Count > 0)
+{
+    job = new MeshGenerationJob();
+    job.inputArray = new NativeArray<ChunkToDo>(chunksToGenerate.ToArray(), Allocator.TempJob);
+    job.outputQueue = finishedChunks;
+    job.CHUNK_SIZE = ChunkBlock.CHUNK_SIZE;
+
+    var handle = job.Schedule(chunksToGenerate.Count, 4);
+    chunksToGenerate.Clear();
+    handle.Complete(); // Wait for the job to complete
+}
+
+if (finishedChunks.IsCreated) {
+    for (int i = 0; i < finishedChunks.Length; i++)
+    {
+        ChunkData result = finishedChunks[i];
+        // work with the data
+    }
+}
+
+
+using Unity.Jobs;
+using Unity.Burst;
+using System.Collections.Generic;
+
+[BurstCompile]
+public struct MeshGenerationJob : IJobParallelFor
+{
+    // References
+    [ReadOnly] 
+    public NativeArray&lt;ChunkToDo> inputArray;
+    public NativeArray&lt;ChunkData> outputQueue;
+    public void Execute(int index)
+    {
+        Vector3Int position = inputArray[index].position; 
+    }
+}
+                </code>
+            </pre>
+
+
+            <h2>Lists</h2>
+            <pre>
+                <code class="language-cshrap">
+List&lt;int> liste = new List&lt;int>();
+liste.Add(5);
+liste.RemoveAt(0);
+liste.Length
+
+Queue&lt;int> callerIds = new Queue&lt;int>();
+callerIds.Enqueue(5);
+callerIds.Dequeue();
+callerIds.Count
+callerIds.Clear();
+
+Dictionary&lt;int, string> dict = new Dictionary&lt;int, string>();
+dict.Add(5, "five");
+dict.Remove(5);
+dict.Count
+dict.Clear();
+                </code>
+            </pre>
+
+            <h2>Mesh Generation</h2>
+            <pre>
+                <code class="language-cshrap">
+public MeshRenderer meshRenderer; // Has only to exist; No Need to work with it
+public MeshFilter meshFilter;
+
+int vertexIndex = 0;
+List&lt;Vector3> vertices = new List&lt;Vector3>();
+List&lt;int> triangles = new List&lt;int>();
+List&lt;Vector2> uvs = new List&lt;Vector2>();
+
+triangles.Add(vertexIndex);
+triangles.Add(vertexIndex + 1);
+triangles.Add(vertexIndex + 2);
+triangles.Add(vertexIndex + 2);
+triangles.Add(vertexIndex + 1);
+triangles.Add(vertexIndex + 3);
+vertexIndex += 4;
+addTexture(world.blockTypes[voxelMap[(int)position.x, (int)position.y, (int)position.z]].getTextureId(i));
+
+
+
+void addTexture(int textureID) {
+    float y = textureID / Voxel.textureAtlasSizeInBlocks;
+    float x = textureID - (y * Voxel.textureAtlasSizeInBlocks);
+
+    x *= Voxel.NormalizedBlockTextureSize;
+    y *= Voxel.NormalizedBlockTextureSize;
+
+    y = 1f - y - Voxel.NormalizedBlockTextureSize;
+
+    uvs.Add(new Vector2(x, y));
+    uvs.Add(new Vector2(x, y + Voxel.NormalizedBlockTextureSize));
+    uvs.Add(new Vector2(x + Voxel.NormalizedBlockTextureSize, y));
+    uvs.Add(new Vector2(x + Voxel.NormalizedBlockTextureSize, y + Voxel.NormalizedBlockTextureSize));
+}
+
+void createMesh() {
+    Mesh mesh = new Mesh();
+    mesh.vertices = vertices.ToArray();
+    mesh.triangles = triangles.ToArray();
+    mesh.uv = uvs.ToArray();
+    mesh.RecalculateNormals();
+    
+    meshFilter.mesh = mesh;
+}
+                </code>
+            </pre>
+        </div>
 
 <div id="includeFooter"></div>

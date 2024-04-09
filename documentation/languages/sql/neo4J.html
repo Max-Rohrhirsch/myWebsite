@@ -1,0 +1,71 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+<!-- ------ SIDE NAVIGATION BAR ----- -->
+<div class="sidenav">
+    <a href="/documentation/languages/sql/sql.html">Basics</a>
+    <a href="/documentation/languages/sql/mid.html">mid</a>
+    <a href="/documentation/languages/sql/neo4J.html">Neo4J</a>
+</div>
+<!-- ------ MAIN CONTENT ----- -->
+<div class="main">
+    <h1>Neo4J</h1>
+    <class="wrapper">
+        <pre>
+            <code class="language-sql">
+MATCH (player:PLAYER) RETURN player.name AS name LIMIT 10
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+MATCH (player:PLAYER) 
+WHERE name = "max"
+RETURN player.name AS name 
+LIMIT 10 
+ORDER BY player.age DESC
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+MATCH (player:PLAYER {name: "max"}) RETURN player.age
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+player.name <> "max" // Not named max
+RETURN player SKIP 2 LIMIT 2 // The next 2 players
+AVG() MAX() MIN() ABS() COUNT() SUM()
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+MATCH (player:PLAYER) -[:PLAYS_FOR]-> (team:TEAM {name: "teamname"}) RETURN player
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+MATCH (max:PLAYER {name:"max"})
+MATCH (erik:PLAYER {name: "erik"})
+CREATE (max)-[:CODES_WITH]->(erik)
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+MATCH (player {name: "max"})
+DETACH DELETE player
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+CREATE (:PLAYER {name: "max"})
+            </code>
+        </pre>
+        <pre>
+            <code class="language-sql">
+MATCH (player:PLAYER)
+WHERE player.name = "max"
+SET player.height = 2.02
+            </code>
+        </pre>
+
+<div id="includeFooter"></div>

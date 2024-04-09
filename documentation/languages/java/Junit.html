@@ -1,0 +1,62 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+
+<!-- ------ SIDE NAVIGATION BAR ----- -->
+<div class="sidenav">
+    <a href="/documentation/languages/java/java.html">Basics</a>
+    <a href="/documentation/languages/java/swing.html">Swing</a>
+    <a href="/documentation/languages/java/spring.html">Spring Boot</a>
+    <a href="/documentation/languages/java/Junit.html">Junit</a>
+</div>
+
+<!-- ------ MAIN CONTENT ----- -->
+<div class="main">
+    <h1>JUnit</h1>
+    <hr>
+
+    <h2>Basics</h2>
+    <div class="wrapper">
+        <pre>
+            <code class="language-java">
+@Test
+public void test_Function_Name() {
+        assertEquals(result, function());
+}
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-java">
+assertThat(object, equalTo(other))
+assertThat(function(), is(closeTo(result, abweichung));
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-java">
+@Test(expected=NullPointerException.class)
+public void needsExistingScaleFactor() {
+        ...;
+}
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-java">
+@Before
+@After
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-text">
+assertEquals: Überprüfung auf Gleichheit
+assertSame: Überprüfung auf Identität
+assertTrue: Überprüfung auf Wahrheit
+asserNull: Überprüfung auf null
+assertThat: Überprüfung auf Bedingung (z.B. größer, kleiner, etc.)
+            </code>
+        </pre>
+    </div>
+<div id="includeFooter"></div>
