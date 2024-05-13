@@ -10,6 +10,7 @@
         <div class="main">
             <h1>Computer craft</h1>
             <hr>
+            <a src="https://tweaked.cc/">tweaked.cc/</a>
             <h2>Pastebin</h2>
             <out>
                 pastebin get <green>YnZf1HAR</green> startup
@@ -39,41 +40,203 @@
             </table>
             <hr>
 
-            <h2>Lua</h2>
-            <pre>
-                <code class="language-lua">
-function fact (n)
-    if n == 0 then
-        return 1
-    else
-        return n * fact(n-1)
-    end
-end
 
+
+<h2>Lua</h2>
+<div class="wrapper">
+<pre>
+    <code class="language-lua"> -- comment
+-- comment
+--[[ Multiline
+     comment ]]
+    </code>
+</pre>
+
+<pre>
+    <code class="language-lua"> -- Variables
+local x = 2
+two, four = 2, 4
+    </code>
+</pre>
+
+<pre>
+    <code class="language-lua"> -- IO
 print("enter a number:")
 a = io.read("*number")        -- read a number
 print(fact(a))
+    </code>
+</pre>
 
 
-while( true )
-do
-   print("This loop will run forever.")
+<pre>
+    <code class="language-lua"> -- Classes
+Account = {}
+
+function Account:new(balance)
+  local t = setmetatable({}, { __index = Account })
+
+  -- Your constructor stuff
+  t.balance = (balance or 0)
+  return t
 end
 
-for i = 10,1,-1 
-do 
-   print(i) 
+function Account:withdraw(amount)
+  print("Withdrawing "..amount.."...")
+  self.balance = self.balance - amount
+  self:report()
 end
 
-array = {"Lua", "Tutorial"}
+function Account:report()
+  print("Your current balance is: "..self.balance)
+end
+
+a = Account:new(9000)
+a:withdraw(200)    -- method call
+    </code>
+</pre>
+
+
+<pre>
+    <code class="language-lua"> --Functions
+function myFunction()
+    return 1
+end
+
+function myFunctionWithArgs(a, b)
+    -- ...
+end
+
+myFunction()
+
+anonymousFunctions(function()
+    -- ...
+end)
+
+-- Not exported in the module
+local function myPrivateFunction()
+end
+
+-- Splats
+function doAction(action, ...)
+    print("Doing '"..action.."' to", ...)
+    --> print("Doing 'write' to", "Shirley", "Abed")
+end
+
+doAction('write', "Shirley", "Abed")
+    </code>
+</pre>
+
+<pre>
+    <code class="language-lua"> -- Loops
+while condition do
+end
+
+for i = 1,5 do
+end
+
+for i = start,finish,delta do
+end
+
+for k,v in pairs(tab) do
+end
+
+repeat
+until condition
+
+-- Breaking out:
+while x do
+  if condition then break end
+end
+</code>
+</pre>
+
+<pre>
+    <code class="language-lua"> -- Conditionals
+if condition then
+  print("yes")
+elseif condition then
+  print("maybe")
+else
+  print("no")
+end
+    </code>
+</pre>
+
+<pre>
+    <code class="language-lua"> -- Tables/ Arrays
+t = {}
+t = { a = 1, b = 2 }
+t.a = function() ... end
+
+t = { ["hello"] = 200 }
+t.hello
+
+-- Remember, arrays are also tables
+array = { "a", "b", "c", "d" }
+print(array[2])       -- "b" (one-indexed)
+print(#array)         -- 4 (length)
+
 for key,value in ipairs(array) 
 do
     print(key, value)
 end
+</code>
+</pre>
 
-mytable["wow"] = "Tutorial"
-                </code>
-            </pre>
+<pre>
+    <code class="language-lua">
+'string'..'concatenation'
+
+s = "Hello"
+s:upper()
+s:lower()
+s:len()    -- Just like #s
+
+s:find()
+s:gfind()
+
+s:match()
+s:gmatch()
+
+s:sub()
+s:gsub()
+
+s:rep()
+s:char()
+s:dump()
+s:reverse()
+s:byte()
+s:format()
+    </code>
+</pre>
+<pre>
+    <code class="language-lua">
+dofile("hello.lua")
+loadfile("hello.lua")
+
+assert(x)    -- x or (raise an error)
+assert(x, "failed")
+
+type(var)   -- "nil" | "number" | "string" | "boolean" | "table" | "function" | "thread" | "userdata"
+
+-- Does /not/ invoke meta methods (__index and __newindex)
+rawset(t, index, value)    -- Like t[index] = value
+rawget(t, index)           -- Like t[index]
+
+_G  -- Global context
+setfenv(1, {})  -- 1: current function, 2: caller, and so on -- {}: the new _G
+
+pairs(t)     -- iterable list of {key, value}
+ipairs(t)    -- iterable list of {index, value}
+
+tonumber("34")
+tonumber("8f", 16)
+tostring(34.5)
+    </code>
+</pre>
+
+
+</div>
             <hr>
             <out>
                 commands.exec(string command)
@@ -177,6 +340,8 @@ mytable["wow"] = "Tutorial"
                 </tr>
             </table>
             <hr>
+
+
             <h1>Printer</h1>
             <hr>
             <table>
@@ -217,6 +382,256 @@ mytable["wow"] = "Tutorial"
                     <td></td>
                   </tr>
             </table>
+
+            <hr>
+            <h1>OS</h1>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>os.sleep()</td>
+                    <td>Slleps for seconds</td>
+                </tr>
+                <tr>
+                    <td>os.shutdown()</td>
+                    <td>Shuts down the computer</td>
+                </tr>
+                <tr>
+                    <td>os.reboot()</td>
+                    <td>Reboots the computer</td>
+                </tr>
+                <tr>
+                    <td>os.run(env, path, ...)</td>
+                    <td>Runs a program</td>
+                </tr>
+                <tr>
+                    <td>os.queueEvent(event, ...)</td>
+                    <td>Queues an event</td>
+                </tr>
+                <tr>
+                    <td>os.pullEvent(event)</td>
+                    <td>Pulls an event</td>
+                </tr>
+                <tr>
+                    <td>os.startTimer(number time)</td>
+                    <td>Starts a timer</td>
+                </tr>
+                <tr>
+                    <td>os.cancelTimer(number timer)</td>
+                    <td>Cancels a timer</td>
+                </tr>
+                <tr>
+                    <td>os.setComputerLabel(string label)</td>
+                    <td>Sets the computer label</td>
+                </tr>
+                <tr>
+                    <td>os.getComputerLabel()</td>
+                    <td>Gets the computer label</td>
+                </tr>
+                <tr>
+                    <td>os.getComputerID()</td>
+                    <td>Gets the computer ID</td>
+                </tr>
+                <tr>
+                    <td>os.getComputerType()</td>
+                    <td>Gets the computer type</td>
+                </tr>
+            </table>
+            <hr>
+            <h1>Terminal</h1>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>term.clear()</td>
+                    <td>Clears the terminal</td>
+                </tr>
+                <tr>
+                    <td>term.clearLine()</td>
+                    <td>Clears the line</td>
+                </tr>
+                <tr>
+                    <td>term.setCursorPos(number x, number y)</td>
+                    <td>Sets the cursor position</td>
+                </tr>
+                <tr>
+                    <td>term.getCursorPos()</td>
+                    <td>Gets the cursor position</td>
+                </tr>
+                <tr>
+                    <td>term.getSize()</td>
+                    <td>Gets the size of the terminal</td>
+                </tr>
+                <tr>
+                    <td>term.scroll(number n)</td>
+                    <td>Scrolls the terminal</td>
+                </tr>
+                <tr>
+                    <td>term.setTextColor(colors.color)</td>
+                    <td>Sets the text color</td>
+                </tr>
+                <tr>
+                    <td>term.setBackgroundColor(colors.color)</td>
+                    <td>Sets the background color</td>
+                </tr>
+                <tr>
+                    <td>term.isColor()</td>
+                    <td>Checks if the terminal is color</td>
+                </tr>
+                <tr>
+                    <td>term.setTextScale(number scale)</td>
+                    <td>Sets the text scale</td>
+                </tr>
+                <tr>
+                    <td>term.write(string text)</td>
+                    <td>Writes text to the terminal</td>
+                </tr>
+                <tr>
+                    <td>term.blit(string text, string text, string text)</td>
+                    <td>Blits the text</td>
+                </tr>
+                <tr>
+                    <td>term.read([string text])</td>
+                    <td>Reads text from the terminal</td>
+                </tr>
+                <tr>
+                    <td>term.setCursorBlink(boolean blink)</td>
+                    <td>Sets the cursor blink</td>
+                </tr>
+            </table>
+            <hr>
+            <h1>Rednet</h1>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>rednet.open(string side)</td>
+                    <td>Opens the rednet on the side</td>
+                </tr>
+                <tr>
+                    <td>rednet.close(string side)</td>
+                    <td>Closes the rednet on the side</td>
+                </tr>
+                <tr>
+                    <td>rednet.isOpen(string side)</td>
+                    <td>Checks if the rednet is open on the side</td>
+                </tr>
+                <tr>
+                    <td>rednet.send(number id, string message [, string protocol])</td>
+                    <td>Sends a message</td>
+                </tr>
+                <tr>
+                    <td>rednet.broadcast(string message [, string protocol])</td>
+                    <td>Broadcasts a message</td>
+                </tr>
+                <tr>
+                    <td>rednet.receive([string protocol [, number timeout]])</td>
+                    <td>Receives a message</td>
+                </tr>
+                <tr>
+                    <td>rednet.host(string protocol, string hostname)</td>
+                    <td>Hosts a protocol</td>
+                </tr>
+                <tr>
+                    <td>rednet.unhost(string protocol)</td>
+                    <td>Unhosts a protocol</td>
+                </tr>
+                <tr>
+                    <td>rednet.lookup(string protocol, string hostname)</td>
+                    <td>Looks up a protocol</td>
+                </tr>
+            </table>
+            <hr>
+            <h1>HTTP</h1>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>http.request(string url [, string postData])</td>
+                    <td>Requests a url</td>
+                </tr>
+                <tr>
+                    <td>http.checkURL(string url)</td>
+                    <td>Checks a url</td>
+                </tr>
+                <tr>
+                    <td>http.websocket(string url)</td>
+                    <td>Websockets</td>
+                </tr>
+            </table>
+
+            <hr>
+            <h2>Monitores touch</h2>
+            <pre>
+                <code class="language-lua"> -- Monitores touch
+w, h = term.getSize()
+monitor = peripheral.wrap("top")
+
+monitor.setTextScale(0.5)
+monitor.clear()
+monitor.setCursorPos(1, 1)
+monitor.write("Hello, world!")
+
+while true do
+    local event, side, x, y = os.pullEvent("monitor_touch")
+    monitor.clear()
+    monitor.setCursorPos(1, 1)
+    monitor.write("You touched me at "..x..","..y)
+end
+                </code>
+            </pre>
+            <pre>
+                <code class="language-lua"> -- Monitores Buttons and graphics
+w, h = term.getSize()
+monitor = peripheral.wrap("top")
+
+monitor.setTextScale(0.5)
+monitor.clear()
+
+local buttons = {
+    { text = "Button 1", x = 1, y = 1, w = 10, h = 3 },
+    { text = "Button 2", x = 1, y = 5, w = 10, h = 3 },
+    { text = "Button 3", x = 1, y = 9, w = 10, h = 3 },
+}
+
+local function drawButton(button)
+    monitor.setCursorPos(button.x, button.y)
+    monitor.write(string.rep(" ", button.w))
+    monitor.setCursorPos(button.x, button.y)
+    monitor.write(button.text)
+end
+
+for _, button in ipairs(buttons) do
+    drawButton(button)
+end
+
+while true do
+    local event, side, x, y = os.pullEvent("monitor_touch")
+    for _, button in ipairs(buttons) do
+        if x >= button.x and x <= button.x + button.w - 1 and
+              y >= button.y and y <= button.y + button.h - 1 then
+            monitor.clear()
+            monitor.setCursorPos(1, 1)
+            monitor.write("You clicked "..button.text)
+            sleep(1)
+            monitor.clear()
+            for _, button in ipairs(buttons) do
+                drawButton(button)
+            end
+            break
+        end
+    end
+end
+                </code>
+            </pre>
 
 
 <div id="includeFooter"></div>

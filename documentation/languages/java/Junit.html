@@ -51,12 +51,50 @@ public void needsExistingScaleFactor() {
 
         <pre>
             <code class="language-text">
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doReturn;
+
 assertEquals: Überprüfung auf Gleichheit
 assertSame: Überprüfung auf Identität
 assertTrue: Überprüfung auf Wahrheit
 asserNull: Überprüfung auf null
 assertThat: Überprüfung auf Bedingung (z.B. größer, kleiner, etc.)
+
+assertThat(target).isEqualTo(expected);
+</code>
+        </pre>
+
+        <h2>Mockito</h2>
+        <pre>
+            <code class="language-java">
+@Autowired
+private Wired wired; // Empty normal object
+
+@MockBean
+private MockedObject mockedObject; // Mocked object
+
+@Test
+void myTest() {
+    // given
+    doReturn("value").when(mockedObject).method(any(), String.class);
+    
+    mockedObject.method("value", "value");
+
+    // then
+    assertThat(wired.getSomething()).isEqualTo("value");
+}
             </code>
         </pre>
+
+        <h2>SonarQube Ignore</h2>
+        <pre>
+            <code class="language-java">
+@SonarCoverageExcludeAnotationGeneration
+class ...
+            </code>
+        </pre>
+
     </div>
 <div id="includeFooter"></div>

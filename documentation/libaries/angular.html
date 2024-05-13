@@ -15,6 +15,7 @@
             <code class="language-bash">
 /** Node.js must be Installed */
 npm install -g @angular/cli
+npm install -g @angular/cli@15.2.10
             </code>
         </pre>
     </div>
@@ -75,5 +76,32 @@ Component.ts:
     </code>
 </pre>
 </div>
+
+<h1>Angular + SpringBoot</h1>
+<pre>
+    <code class="language-java">
+@// WebConfig.java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:4200")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
+                .allowCredentials(true);
+    }
+}
+    </code>
+</pre>
+
+<pre>
+    <code class="language-js">
+constructor(private http: HttpClient) { }
+
+public getUsers(): Observable&lt;any>{
+    return this.http.get('http://localhost:8080/api/users');
+}
+    </code>
+</pre>
 
 <div id="includeFooter"></div>
