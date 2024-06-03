@@ -131,7 +131,6 @@ green { color: green }
     left: 200px;
 
     padding: 50px;
-    font-size: 18px;
 
     min-height: 100%;
     width: 80vw;
@@ -172,7 +171,6 @@ out {
 
 .wrapper {
     display: grid;
-    font-size: 18px;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
@@ -188,6 +186,10 @@ out {
 }
 .half pre {
     height: calc(100% - 50px);
+}
+
+pre {
+    font-size: 14px;
 }
 
 /* ------------ Table ----------- */
