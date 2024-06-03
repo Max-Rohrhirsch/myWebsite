@@ -43,6 +43,7 @@ green { color: green }
   .dropdown {
     position: relative;
     display: inline-block;
+    color: white;
   }
   
   .dropdown-content {

@@ -232,14 +232,14 @@ loadfile("hello.lua")
 assert(x)    -- x or (raise an error)
 assert(x, "failed")
 
-type(var)   -- "nil" | "number" | "string" | "boolean" | "table" | "function" | "thread" | "userdata"
+type(var)   -- "nil" | "number" | "string" | "boolean"
 
 -- Does /not/ invoke meta methods (__index and __newindex)
 rawset(t, index, value)    -- Like t[index] = value
 rawget(t, index)           -- Like t[index]
 
 _G  -- Global context
-setfenv(1, {})  -- 1: current function, 2: caller, and so on -- {}: the new _G
+setfenv(1, {})  -- 1: current function, 2: caller
 
 pairs(t)     -- iterable list of {key, value}
 ipairs(t)    -- iterable list of {index, value}
@@ -271,7 +271,7 @@ tostring(34.5)
                 </tr>
                 <tr>
                   <td>Turtle.carft(number quantity)</td>
-                  <td>Craft items using ingredients anywhere in the turtle's inventory and place results in the active slot. If a quantity is specified, it will craft only up to that many items, otherwise, it will craft as many of the items as possible.</td>
+                  <td>Craft items using ingredients anywhere in the turtle's inventory and place results in the active slot. I</td>
                 </tr>
                 <tr>
                     <td>turtle.forward() | .back() | .up() | .down()</td>
