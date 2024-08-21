@@ -192,6 +192,10 @@ pre {
     font-size: 14px;
 }
 
+pre code {
+    overflow-y: hidden;
+}
+
 /* ------------ Table ----------- */
 
 table {

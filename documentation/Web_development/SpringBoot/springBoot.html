@@ -1,11 +1,6 @@
 <script src="/jquery.js"></script> 
 <div id="includeHeader"></div>
 
-<style>
-    pre {
-        overflow-y: hidden;
-    }
-</style>
         <!-- ------ SIDE NAVIGATION BAR ----- -->
         <div class="sidenav">
             <a href="/documentation/Web_development/springBoot.html">Basics</a>
@@ -183,30 +178,6 @@ public Optional&lt;Student> getStudent(@PathVariable("ID") int ID) {
     </code>
 </pre>
 </div>
-<pre>
-    <code class="language-java">// Java Database
-import java.sql.*;
-
-String url = "jdbc:mysql://localhost:3306/newDB";
-String username="root";
-String password="1234";
-
-try {
-    Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection connection = DriverManager.getConnection(url, username, password);
-    Statement statement = connection.createStatement();
-    ResultSet resultSet = statement.executeQuery("SELECt * FROM student");
-
-    while (resultSet.next()) {
-        System.out.println(resultSet.getInt(1));
-    }
-
-    connection.close();
-} catch (Exception e) {
-    System.out.println(e);
-}
-    </code>
-</pre>
 <pre><code class="language-java">
 @Controller
 public class myController {

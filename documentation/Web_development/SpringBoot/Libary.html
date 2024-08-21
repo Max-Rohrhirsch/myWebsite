@@ -1,0 +1,115 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+<!-- ------ SIDE NAVIGATION BAR ----- -->
+<div class="sidenav">
+    <a href="/documentation/Web_development/SpringBoot/springBoot.html">Basics</a>
+    <a href="/documentation/Web_development/SpringBoot/Libary.html">Libary</a>
+</div>
+
+<!-- ------ MAIN CONTENT ----- -->
+<div class="main">
+    <h1>Spring Boot Libary</h1>
+    <hr><br>
+    <div class="wrapper">
+        <pre>
+            <code class="language-kotlin">
+@ConfigurationProperties("server.mail") // this is the path in the yaml
+data class DatabaseProperties(
+    val port: Int = 1234,
+    val user: String?
+)
+
+
+// --------------------------
+@Configuration
+@EnableConfigurationProperties(DatabaseProperties::class) 
+class DatabaseConfig(
+		val databaseProperties: DatabaseProperties
+) {
+
+}
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-kotlin">
+// Mokk and Kotest
+class MailServiceTest : FunSpec({
+    ...
+    context("MailService") {
+        test("should send ...") {
+            every { mailProperties.isMailEnabled } returns true
+            every { emailSender.send(any<SimpleMailMessage>()) } throws RuntimeException("Sending failed")
+    
+            ...
+            
+            verify { emailQueueService.insertEmail(any()) } // is called
+            verify(exactly = 0) { emailSender.send(any<SimpleMailMessage>()) } // is not called
+            message.from shouldBe sender
+        }
+    }
+})
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-kotlin">
+@Scheduled(fixedRate = 20, timeUnit = TimeUnit.SECONDS)
+fun run() {
+    // This will be called every 20 Seconds. You can also use Cronjob Syntax
+}
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-kotlin">
+companion object {
+    private val log = LoggerFactory.getLogger(MailService::class.java)
+}
+log.warn()
+log.info()
+log.error()
+            </code>
+        </pre>
+
+        <pre>
+            <code class="language-kotlin">
+// Databases with exposed
+object EmailQueueTable : Table("email_queue") {
+    val id = varchar("id", 255)
+    val to = varchar("recipient_to", 255)
+    val bcc = varchar("bcc", 255)
+    val subject = varchar("subject", 255)
+    val text = text("text")
+    val sender = varchar("sender", 255).nullable()
+    val attachmentCount = integer("attachment_count")
+    val retryCount = integer("retry_count").default(0)
+    val updatedAt = datetime("updated_at").nullable()
+
+    override val primaryKey = PrimaryKey(id)
+}
+
+--------------------------------------------------------------------
+
+@Component
+@Transactional
+class EMailQueueService(
+    private val eMailQueueTable: EmailQueueTable
+) {
+		fun insertEmail(...) {
+				transaction {
+						EmailQueueTable.insert {...}
+						EmailQueueTable.deleteWhere { EmailQueueTable.id eq id }
+						EmailQueueTable.selectAll().map { toDTO(it) }
+				}
+		}
+}
+
+            </code>
+        </pre>
+    </div>
+
+</div>
+<script src="/documentation/prism.js"></script>
+<div id="includeFooter"></div>
