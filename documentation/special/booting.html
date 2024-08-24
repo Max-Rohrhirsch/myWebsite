@@ -1,0 +1,84 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+<!-- ------ SIDE NAVIGATION BAR ----- -->
+<div class="sidenav">
+    <a href="/documentation/special/booting.html">Booting</a>
+</div>
+
+<!-- ------ MAIN CONTENT ----- -->
+<div class="main">
+    <h1>Booting</h1>
+    <hr>
+    <div class="half">
+        <div>
+            <h2>Windows</h2>
+            <p>In windows you need a Bootstick.</p>
+            <p>Select "Repair your computer and Navigate to "Troubleshoot -> Advanced Options -> Command Prompt"</p>
+            <pre>
+                <code class="language-bash">
+bootrec /fixmbr
+bootrec /fixboot
+bootrec /scanos
+bootrec /rebuildbcd
+                </code>
+            </pre>
+            <p>Only if this failes, execute the following code:</p>
+            <pre>
+                <code class="language-bash">
+diskpart
+
+list disk
+selsect disk 0 // replace 0 with the primary disk 
+
+list partition 
+select partition x // replace 0 with the EFI partition (smaller than 512 MB)
+
+detail partition // Confirm that its the EFI partition
+
+assign letter=Z
+exit??????
+
+bootrec /fixboot
+bootrec /scanos
+bootrec /rebuildbcd
+
+bcdboot C:\Windows /s Z: /f UEFI
+
+diskpart 
+// Select disk and partition
+remove letter=Z
+exit
+                </code>
+            </pre>
+        </div>
+
+        <div>
+            <h2>Linux</h2>
+            <p>In Linux you need a Live Bootstick and maybe deaktivate Secure Boot in bios.</p>
+            <pre>
+                <code class="language-bash">
+sudo fdisk -l
+
+sudo mount /dev/sda2 /mnt
+
+sudo mount --bind /dev /mnt/dev
+sudo mount --bind /proc /mnt/proc
+sudo mount --bind /sys /mnt/sys
+sudo mount /dev/pts /mnt/dev/pts
+
+sudo chroot /mnt
+
+grub-install /dev/sda
+update-grub
+
+exit
+sudo reboot
+                </code>
+            </pre>
+        </div>
+    </div>
+
+</div>
+<script src="/documentation/prism.js"></script>
+<div id="includeFooter"></div>

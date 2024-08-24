@@ -190,11 +190,9 @@ out {
 
 pre {
     font-size: 14px;
+    overflow-y: hidden !important;
 }
 
-pre code {
-    overflow-y: hidden;
-}
 
 /* ------------ Table ----------- */
 
