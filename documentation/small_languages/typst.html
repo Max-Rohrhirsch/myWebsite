@@ -13,7 +13,7 @@
             <a href="https://typst.app/">Typst</a>
             <div class="wrapper">
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-markdown">
 // Aufzählung
 1. ...
 2. ...
@@ -34,7 +34,7 @@ Manually numbered:
                 </pre>
 
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-markdown">
 // Split/Grid
 
 #grid(
@@ -54,7 +54,7 @@ Manually numbered:
                 </pre>
 
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-markdown">
 // cite
 This was already noted by
 pirates long ago. @arrgh
@@ -70,7 +70,7 @@ explicitly. #cite(&lt;arrgh>)
                 </pre>
 
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-markdown">
 // Aufzählung 
 . ...
 . ...
@@ -83,7 +83,7 @@ explicitly. #cite(&lt;arrgh>)
                 </pre>
 
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-markdown">
 = Überschrift
 == Zweite Überschrift
 === Dritte Überschrift
@@ -94,13 +94,13 @@ _ITALIC_
                 </pre>
 
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-markdown">
 #image("glacier.jpg", width: 70%)
                     </code>
                 </pre>
 
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-markdown">
 #figure(
   image("glacier.jpg", width: 70%),
   caption: [
@@ -112,7 +112,7 @@ _ITALIC_
                 </pre>
 
                 <pre>
-                    <code class="language-typst">
+                    <code class="language-Latex">
 // Math
 $Q = rho A v + C$
 
@@ -124,7 +124,7 @@ $ v := vec(x_1, x_2, x_3) $
                 </pre>
 
             <pre>
-                <code class="language-typst">
+                <code class="language-markdown">
 #set page(
   paper: "a6",
   margin: (x: 1.8cm, y: 1.5cm),
@@ -137,7 +137,7 @@ $ v := vec(x_1, x_2, x_3) $
             </pre>
 
             <pre>
-                <code class="language-typst">
+                <code class="language-markdown">
 // template
 #let conf(title, doc) = {
 	#title
@@ -152,7 +152,7 @@ $ v := vec(x_1, x_2, x_3) $
             </pre>
 
             <pre>
-                <code class="language-typst">
+                <code class="language-markdown">
 #link("https://example.com") \
 #link("https://example.com")[
   See example.com
@@ -161,7 +161,7 @@ $ v := vec(x_1, x_2, x_3) $
             </pre>
 
             <pre>
-                <code class="language-typst">
+                <code class="language-markdown">
 ```rust
 fn main() {
     println!("Hello World!");
@@ -176,7 +176,7 @@ fn main() {
         <h2>Advanced</h2>
         <div class="half">
             <pre>
-                <code class="language-typst">
+                <code class="language-markdown">
 #set table(
   stroke: none,
   gutter: 0.2em,
@@ -218,7 +218,7 @@ fn main() {
 
             <h2>Template</h2>
             <pre>
-                <code class="language-typst">
+                <code class="language-markdown">
 -// IMPORT
 #import "Template.typ": einleitung, quellen
 
@@ -260,28 +260,20 @@ fn main() {
 #pagebreak()
 
 
-
-
-
-
-
-///////////////////////////
-//          SCHLUSS
-///////////////////////////
 #quellen()
                 </code>
             </pre>
 
             <pre>
-                <code class="language-typst">
-                    @article{lin1973,
-                        author  = {Shen Lin and Brian W. Kernighan},
-                        title   = {An Effective Heuristic Algorithm for the Travelling-Salesman Problem},
-                        journal = {Operations Research},
-                        volume  = {21},
-                        year    = {1973},
-                        pages   = {498--516},
-                     }
+                <code class="language-markdown">
+@article{lin1973,
+    author  = {Shen Lin and Brian W. Kernighan},
+    title   = {An Effective Heuristic Algorithm for the Travelling-Salesman Problem},
+    journal = {Operations Research},
+    volume  = {21},
+    year    = {1973},
+    pages   = {498--516},
+}
                 </code>
             </pre>
         </div>

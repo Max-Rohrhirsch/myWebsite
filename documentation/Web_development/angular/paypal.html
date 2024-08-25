@@ -1,0 +1,119 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+<!-- ------ SIDE NAVIGATION BAR ----- -->
+<div class="sidenav">
+    <a href="/documentation/Web_development/angular/angular.html">Basics</a>
+    <a href="/documentation/Web_development/angular/paypal.html">PayPal</a>
+    <a href="/documentation/Web_development/angular/websockets.html">Websockets</a>
+</div>
+
+<!-- ------ MAIN CONTENT ----- -->
+<div class="main">
+    <h2>Installation</h2>
+    <pre>
+        <code class="language-bash">
+npm install ngx-paypal --save
+
+ng generate component paypal-button --standalone
+        </code>
+    </pre>
+    <p>This only works with static rendering NOT on SSR!!! you also have to import &lt;app-paypal-button>&lt;/app-paypal-button> in the app.component.html</p>
+    <h1>Usage</h1>
+    <h2>Code for PayPal Button (PaypalButton.component.ts)</h2>
+    <pre>
+        <code class="language-kotlin">
+import {IPayPalConfig, ICreateOrderRequest, NgxPayPalModule} from 'ngx-paypal';
+
+@Component({
+    selector: 'app-paypal-button',
+    standalone: true,
+    imports: [
+        NgxPayPalModule
+    ],
+    templateUrl: './paypal-button.component.html',
+    styleUrl: './paypal-button.component.scss'
+})
+export class PaypalButtonComponent implements OnInit {
+    public payPalConfig?: IPayPalConfig;
+
+    ngOnInit(): void {
+        if (typeof window !== "undefined") {
+            this.initConfig();
+        }
+    }
+
+    private initConfig(): void {
+        this.payPalConfig = {
+            currency: 'EUR',
+            clientId: 'AU2DhNGr82J5yroY_NsyjU2RTKVAryT9aX6qv2sL33y-cYkXmQxWOY8XS7AUnXTVqQf_eiZsb5SqegjO',
+            createOrderOnClient: (data: any) => <ICreateOrderRequest>{
+                intent: 'CAPTURE',
+                purchase_units: [
+                    {
+                        amount: {
+                            currency_code: 'EUR',
+                            value: '9.99',
+                            breakdown: {
+                                item_total: {
+                                    currency_code: 'EUR',
+                                    value: '9.99'
+                                }
+                            }
+                        },
+                        items: [
+                            {
+                                name: 'Enterprise Subscription',
+                                quantity: '1',
+                                category: 'DIGITAL_GOODS',
+                                unit_amount: {
+                                    currency_code: 'EUR',
+                                    value: '9.99',
+                                },
+                            }
+                        ]
+                    }
+                ]
+            },
+            advanced: {
+                commit: 'true'
+            },
+            style: {
+                label: 'paypal',
+                layout: 'vertical'
+            },
+            onApprove: (data, actions) => {
+                console.log('onApprove - transaction was approved, but not authorized', data, actions);
+                actions.order.get().then((details: any)=> {
+                    console.log('onApprove - you can get full order details inside onApprove: ', details);
+                });
+            },
+            onClientAuthorization: (data) => {
+                console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+            },
+            onCancel: (data, actions) => {
+                console.log('OnCancel', data, actions);
+            },
+            onError: err => {
+                console.log('OnError', err);
+            },
+            onClick: (data, actions) => {
+                console.log('onClick', data, actions);
+            }
+        }
+    }
+}
+        </code>
+    </pre>
+    <h2>PaypalButton.component.html</h2>
+    <pre>
+        <code class="language-kotlin">
+<ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </code>
+    </pre>
+
+
+
+</div>
+<script src="/documentation/prism.js"></script>
+<div id="includeFooter"></div>

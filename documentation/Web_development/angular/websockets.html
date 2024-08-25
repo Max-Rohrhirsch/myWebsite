@@ -1,0 +1,161 @@
+<script src="/jquery.js"></script> 
+<div id="includeHeader"></div>
+
+<!-- ------ SIDE NAVIGATION BAR ----- -->
+<div class="sidenav">
+    <a href="/documentation/Web_development/angular/angular.html">Basics</a>
+    <a href="/documentation/Web_development/angular/paypal.html">PayPal</a>
+    <a href="/documentation/Web_development/angular/websockets.html">Websockets</a>
+</div>
+
+<!-- ------ MAIN CONTENT ----- -->
+<div class="main">
+    <h2>Installation</h2>
+    <p>This is a simple chat example.</p>
+    <div class="half">
+        <div>
+            <h2>Angular</h2>
+            <pre>
+                <code class="language-bash">
+ng g s websocket
+ng g c chat
+                </code>
+            </pre>
+            <pre>
+                <code class="language-typescript">
+// websocket.service.ts
+
+import { Injectable } from '@angular/core';
+import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+import { Observable } from 'rxjs';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class WebsocketService {
+    private socket$: WebSocketSubject<string>;
+
+    constructor() {
+        this.socket$ = webSocket<string>({
+            url: 'ws://localhost:8080/chat',
+            deserializer: (e) => e.data,
+            serializer: (value) => value
+        });
+    }
+
+    sendMessage(message: string) {
+        this.socket$.next(message);
+    }
+
+    getMessages(): Observable<string> {
+        return this.socket$.asObservable();
+    }
+
+    close() {
+        this.socket$.complete();
+    }
+}
+                
+                </code>
+            </pre>
+            <pre>
+                <code class="language-typescript">
+export class ChatComponent implements OnInit, OnDestroy {
+    message: string = '';
+    messages: string[] = [];
+    private messageSubscription: Subscription = new Subscription();
+
+    constructor(private websocketService: WebsocketService) {}
+
+    ngOnInit() {
+        this.messageSubscription = this.websocketService.getMessages().subscribe(
+            (message) => {
+                this.messages.push(message);
+            },
+            (err) => console.error(err)
+        );
+    }
+
+    sendMessage() {
+        if (this.message) {
+            this.websocketService.sendMessage(this.message);
+            this.message = '';
+        }
+    }
+
+    ngOnDestroy(): void {
+        this.messageSubscription.unsubscribe();
+        this.websocketService.close();
+    }
+}
+                </code>
+            </pre>
+            <pre>
+                <code class="language-html">
+&lt;div&gt;
+&lt;h2&gt;WebSocket Chat&lt;/h2&gt;
+
+&lt;div *ngFor=&quot;let message of messages&quot;&gt;
+    &lt;p&gt;{{ message }}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;input
+    type=&quot;text&quot;
+    [(ngModel)]=&quot;message&quot;
+    placeholder=&quot;Type your message here...&quot;
+/&gt;
+&lt;button (click)&quot;sendMessage()&quot;&gt;Send&lt;/button&gt;
+&lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+        <div>
+            <h2>Spring boot</h2>
+            <pre>
+                <code class="language-gradle">
+implementation("org.springframework.boot:spring-boot-starter-websocket")
+implementation("org.springframework.boot:spring-boot-starter-web")
+implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+implementation("org.jetbrains.kotlin:kotlin-reflect")
+implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+testImplementation("org.springframework.boot:spring-boot-starter-test")
+                </code>
+            </pre>
+            <pre>
+                <code class="language-kotlin">
+@Configuration
+@EnableWebSocket
+class WebSocketConfig: WebSocketConfigurer {
+    override fun registerWebSocketHandlers(registry: WebSocketHandlerRegistry) {
+        registry.addHandler(ChatWebSocketHandler(), "/chat")
+                .setAllowedOrigins("*")
+    }
+}
+                </code>
+            </pre>
+            <pre>
+                <code class="language-kotlin">
+class ChatWebSocketHandler: TextWebSocketHandler() {
+    private val sessions: MutableSet&lt;WebSocketSession> = HashSet()
+
+    override fun afterConnectionEstablished(session: WebSocketSession) {
+        sessions.add(session)
+        session.sendMessage(TextMessage("Welcome to the WebSocket chat!"))
+    }
+
+    override fun handleTextMessage(session: WebSocketSession, message: TextMessage) {
+        sessions.filter { it.isOpen && it.id != session.id }
+                .forEach { it.sendMessage(TextMessage("Broadcast: ${message.payload}")) }
+    }
+
+    override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
+        sessions.remove(session)
+    }
+}
+                </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<script src="/documentation/prism.js"></script>
+<div id="includeFooter"></div>
