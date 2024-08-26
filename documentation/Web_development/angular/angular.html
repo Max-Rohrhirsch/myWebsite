@@ -33,11 +33,8 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
                 </code>
             </pre>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
         <div>
+            <br><br>
             <h2>Init</h2>
             <pre>
                 <code class="language-bash">
@@ -47,6 +44,7 @@ ng generate component componentName
             </pre>
         </div>
         <div>
+            <br><br>
             <h2>Run</h2>
             <pre>
                 <code class="language-bash">
@@ -69,14 +67,44 @@ ng serve --open
 <div class="half">
 <pre>
     <code class="language-typescript">
-&lt;button (click)="func()"> &lt;/button> // on click execute
+&lt;button (click)="func()"> &lt;/button>
+ // on click execute
     </code>
 </pre>
 <pre>
     <code class="language-typescript">
-&lt;p *ngIf="count &lt;= 1> Text &lt;/p>     // only shows if condition is true
+&lt;p *ngIf="count &lt;= 1> Text &lt;/p>
+ // only shows if condition is true
     </code>
 </pre>
+<pre>
+    <code class="language-typescript">
+// Binds property value to the result of expression firstName.
+&lt;input [value]="firstName">
+    </code>
+</pre>
+<pre>
+    <code class="language-typescript">
+// 	Calls method readRainbow when a click event
+// is triggered on this button element (or its children)
+// and passes in the event object.
+&lt;button (click)="readRainbow($event)">
+    </code>
+</pre>
+<pre>
+    <code class="language-typescript">
+&lt;div title="Hello {{ponyName}}">
+// Binds a property to an interpolated string,
+// for example, "Hello Seabiscuit". Equivalent to:
+&lt;div [title]="'Hello ' + ponyName">
+    </code>
+</pre>
+<pre>
+    <code class="language-typescript">
+
+    </code>
+</pre>
+
 <pre>
     <code class="language-typescript">
 &lt;p> {{ varName }} &lt;/p> // prints variable

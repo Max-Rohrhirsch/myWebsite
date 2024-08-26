@@ -41,6 +41,17 @@ ORDER BY <green>column</green> <orange>ASC/ DESC</orange>
 LIMIT <green>30</green> -- only first 30 lines
                 </code>
             </pre>
+            <pre>
+              <code class="language-sql">
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+              </code>
+            </pre>
 
             <table>
                 <tr>

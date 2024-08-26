@@ -184,9 +184,6 @@ out {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
-.half pre {
-    height: calc(100% - 50px);
-}
 
 pre {
     font-size: 14px;

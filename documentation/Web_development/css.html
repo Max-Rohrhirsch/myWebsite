@@ -29,6 +29,121 @@ header, footer {
 }
                     </code>
                 </pre>
+                <pre>
+                    <code class="language-css">
+div {
+    width: 300px !important; // Overrides other width 
+}
+                    </code>
+                </pre>
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Selector</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>*</td>
+                        <td>All elements</td>
+                      </tr>
+                      <tr>
+                        <td>div</td>
+                        <td>All &lt;div&gt; tags</td>
+                      </tr>
+                      <tr>
+                        <td>div, p</td>
+                        <td>All &lt;div&gt;s and &lt;p&gt; tags</td>
+                      </tr>
+                      <tr>
+                        <td>div p</td>
+                        <td>All &lt;p&gt; tags inside &lt;div&gt;s</td>
+                      </tr>
+                      <tr>
+                        <td>div &gt; p</td>
+                        <td>All &lt;p&gt; tags, one level deep in &lt;div&gt;</td>
+                      </tr>
+                      <tr>
+                        <td>div + p</td>
+                        <td>All &lt;p&gt; tags immediately after &lt;div&gt;</td>
+                      </tr>
+                      <tr>
+                        <td>div ~ p</td>
+                        <td>All &lt;p&gt; tags preceded by &lt;div&gt;</td>
+                      </tr>
+                      <tr>
+                        <td>.classname</td>
+                        <td>All elements with a certain class</td>
+                      </tr>
+                      <tr>
+                        <td>#idname</td>
+                        <td>Element with a certain ID</td>
+                      </tr>
+                      <tr>
+                        <td>div.classname</td>
+                        <td>All &lt;div&gt; tags with a certain class</td>
+                      </tr>
+                      <tr>
+                        <td>div#idname</td>
+                        <td>All &lt;div&gt; tags with a certain ID</td>
+                      </tr>
+                      <tr>
+                        <td>#idname *</td>
+                        <td>All elements inside the element with a certain ID</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table border="1" cellpadding="5" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Selector</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>a[target]</td>
+                        <td>Links with a target attribute</td>
+                      </tr>
+                      <tr>
+                        <td>a[target="_blank"]</td>
+                        <td>Links which open in a new tab</td>
+                      </tr>
+                      <tr>
+                        <td>[title~="chair"]</td>
+                        <td>Title attribute containing the word "chair"</td>
+                      </tr>
+                      <tr>
+                        <td>[class^="chair"]</td>
+                        <td>Class attribute starts with "chair"</td>
+                      </tr>
+                      <tr>
+                        <td>[class|="chair"]</td>
+                        <td>Class attribute starts with the word "chair"</td>
+                      </tr>
+                      <tr>
+                        <td>[class*="chair"]</td>
+                        <td>Class attribute contains "chair"</td>
+                      </tr>
+                      <tr>
+                        <td>[class$="chair"]</td>
+                        <td>Class attribute ends with "chair"</td>
+                      </tr>
+                      <tr>
+                        <td>input[type="button"]</td>
+                        <td>Input elements with the specified type "button"</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <pre>
+                    <code class="language-css">
+box-shadow: 5px 5px 15px 5px #000000;
+box-shadow: x_offset y_offset spread blur color;
+
+text-shadow: 2px 2px 2px #1C6EA4;
+                    </code>
+                </pre>
             </div>
 
             <h2>Cube</h2>

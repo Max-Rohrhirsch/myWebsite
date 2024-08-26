@@ -52,12 +52,12 @@ public class Controller {
         return "Here is the String: " + resourceID;
     }
 
-    @GetMapping("/test2/{resourceID}")
-    public String getString2(@PathParam("resourceID") String resourceID) {
+    @GetMapping("/test2/") // "/test2?resourceID=3"
+    public String getString2(@RequestParam("resourceID") String resourceID) {
         return "Here is the String: " + resourceID;
     }
 
-    @GetMapping("/get/{ID}")
+    @GetMapping("/get/{ID}")"/test2/28380434"
     public Optional&lt;Student> getStudent(@PathVariable("ID") int ID) {
         Optional&lt;Student> stu = studentService.getReferenceById(ID);
         System.out.println(stu);
@@ -78,39 +78,6 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 }
-    </code>
-</pre>
-<pre>
-    <code class="language-java">// Dependenxy Injection
-
-@Component
-public class TextWriter...
-
-// --------------------------
-
-@Autowired
-Textwriter text;
-
-// Auto import
-
-@NoArgsConstructor
-@AllArgsConstructor
-    </code>
-</pre>
-<pre>
-    <code class="language-java">// Multiple Injection
-
-@Component
-@Qualifier("regular...")
-public class TextWriter...
-
-// --------------------------
-
-@Autowired
-@Qualifier("regular...")
-Textwriter text;
-
-// Auto import & select witch class 
     </code>
 </pre>
 <pre>
@@ -175,6 +142,39 @@ public Optional&lt;Student> getStudent(@PathVariable("ID") int ID) {
     return stu;
 }
 // Start the SQL Server
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// Dependenxy Injection
+
+@Component // same as @Service, @Bean and @Configuration
+public class TextWriter...
+
+// --------------------------
+
+@Autowired
+Textwriter text;
+
+// Auto import
+
+@NoArgsConstructor
+@AllArgsConstructor
+    </code>
+</pre>
+<pre>
+    <code class="language-java">// Multiple Injection
+
+@Component
+@Qualifier("regular...")
+public class TextWriter...
+
+// --------------------------
+
+@Autowired
+@Qualifier("regular...")
+Textwriter text;
+
+// Auto import & select witch class 
     </code>
 </pre>
 </div>
