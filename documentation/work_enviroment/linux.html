@@ -44,5 +44,70 @@
 <p>ssh-keygen -t rsa</p>
 <p>sudo ssh service restart</p>
 
+<h2>Usefull</h2>
+<p>:t. 100     // vim coppy line</p><br>
+<p>tar -cvf name.tar directory  // create zip</p><br>
+<p>tar -xvf name.tar directory  // extract zip</p><br>
+<p>-czvf -xzvf for gzip (.tar.gz)</p><br>
+<br>
+
+<p>SUID u+s execute as root/this user</p>
+<p>SGID g+s the group is owner, even if user creates it</p>
+<p>Sticky Bit o+t Not deletable File (except for Owner)</p>
+
+<h2>Find Commands</h2>
+<div class="half">
+    <pre>
+        <code class="language-bash">// Find
+
+// find a file by atrributes
+find /var/log -name "*.log"
+find / -size +100M
+find /home/max -type d -name "Projects" -delete
+
+/home/username/documents/notes.txt
+/home/username/projects/readme.txt
+/home/username/shared/todolist.txt
+        </code>
+    </pre>
+
+    <pre>
+        <code class="language-bash">// locate
+
+// like find but only by name
+locate notes.txt
+
+/home/username/.bashrc
+/etc/skel/.bashrc
+        </code>
+    </pre>
+
+    <pre>
+        <code class="language-bash">// where
+
+// command for locating commands only
+where grep
+
+/usr/bin/grep
+        </code>
+    </pre>
+
+    <pre>
+        <code class="language-bash">// grep
+
+grep "pattern" < input.txt > output.txt
+        </code>
+    </pre>
+    <pre>
+        <code class="language-bash">// coppy same thing
+
+for i in {1..1000}; do echo "Das ist Zeile Nummer $i" >> datei.txt; done
+
+seq -f "Das ist Zeile Nummer %g" 1000 > datei.txt
+        </code>
+    </pre>
+</div>
+
+
 <script src="/documentation/prism.js"></script>
 <div id="includeFooter"></div>

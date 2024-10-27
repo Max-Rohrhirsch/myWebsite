@@ -109,7 +109,38 @@ ng serve –open
 // change index.html to &lt;base href="./"> 
     </code>
 </pre>
+<h2>HTTPS</h2>
+<pre>
+    <code class="language-bash">
+openssl genpkey -algorithm RSA -out private.key
+openssl req -new -key private.key -out request.csr
+openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt
+    </code>
+</pre>
+<pre>
+    <code class="language-js">
+const https = require('https');
+const fs = require('fs');
+const express = require('express');
 
+// Lade das Zertifikat und den privaten Schlüssel
+const options = {
+    key: fs.readFileSync('path/to/private.key'),
+    cert: fs.readFileSync('path/to/certificate.crt')
+};
+
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello, HTTPS!');
+});
+
+// Erstelle den HTTPS-Server
+https.createServer(options, app).listen(443, () => {
+    console.log('HTTPS Server running on port 443');
+});
+    </code>
+</pre>
 </div>
 <script src="/documentation/prism.js"></script>
 <div id="includeFooter"></div>
